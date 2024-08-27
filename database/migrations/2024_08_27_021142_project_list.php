@@ -15,7 +15,7 @@ class ProjectList extends Migration
     {
         Schema::create('project_list', function (Blueprint $table) {
             $table->id();
-            $table->string('category',100);
+            // $table->string('category',100);
             $table->string('project_number',100);
             $table->string('project_manager',100);
             $table->string('project_location',100);

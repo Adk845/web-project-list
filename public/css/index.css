@@ -1,0 +1,143 @@
+.body{
+    background-color: black;
+}
+
+/*SIDEBAR NAVBAR */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex;
+    height: 100%;
+    padding-left: 0;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #E8BE28;
+    height: 100%;
+    transition: all 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.sidebar-collapsed {
+    width: 60px;
+    padding: 20px 10px;
+    overflow: hidden;
+}
+
+.sidebar-content {
+    display: block;
+}
+
+.sidebar-collapsed .sidebar-content {
+    display: none;
+}
+
+.main-content {
+    margin-left: 250px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+}
+
+.main-content-expanded {
+    margin-left: 60px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 0;
+}
+
+/* Styles for the sidebar toggle button */
+#toggleSidebar {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    padding: 10px; /* Add padding around the icon */
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px; /* Optional: add rounded corners to the button */
+}
+
+/* Ensure that the sidebar content and toggle button do not overlap */
+.sidebar {
+    padding-top: 60px; /* Make space for the toggle button */
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+.nav-item:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Styles for the collapsed state */
+.sidebar-collapsed #toggleSidebar {
+    position: relative;
+}
+
+.sidebar-collapsed .nav-link {
+    justify-content: center;
+}
+
+.sidebar-collapsed .nav-link span {
+    display: none;
+}
+
+
+
+/* UNTUK TABLE =============================================*/
+.project-description {
+    max-width: 1000px; /* Atur sesuai kebutuhan */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-manager {
+    max-width: 1000px; /* Atur sesuai kebutuhan */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-location {
+    max-width: 1000px; /* Atur sesuai kebutuhan */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.project-picture img {
+    max-width: 300px; /* Atur sesuai kebutuhan */
+    max-height: 150px; /* Atur sesuai kebutuhan */
+}
+
