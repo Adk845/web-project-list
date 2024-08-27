@@ -1,18 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-between">
-            <!-- Tombol Tambah -->
-            <a href="{{ route('project.create') }}" class="btn btn-primary">Tambah Proyek</a>
+<div class="container-fluid">
+    
 
-            <!-- Tombol Import, Export, dan Download Template -->
-
-        </div>
-    </div>
-
-    <div class="table-responsive">
+    <div class="table">
         <table class="table table-bordered table-striped" id="projectTable">
             <thead>
                 <tr>

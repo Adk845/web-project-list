@@ -28,7 +28,7 @@ class AuthController extends Controller
         // Proses login menggunakan username dan password
         if (Auth::attempt($credentials)) {
             // Redirect ke halaman dashboard jika berhasil login
-            return redirect()->intended('project`');
+            return redirect()->intended('project');
         }
 
         // Redirect kembali ke halaman login jika gagal
