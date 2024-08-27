@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between">
+        <!-- Tombol Tambah -->
+        <a href="{{ route('project.create') }}" class="btn btn-primary">Tambah Proyek</a>
+
+        <!-- Tombol Import, Export, dan Download Template -->
+
+    </div>
+</div>
 <div class="container-fluid">
     
 
@@ -8,8 +18,8 @@
         <table class="table table-bordered table-striped" id="projectTable">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Category</th>
+                    {{-- <th>No.</th> --}}
+                    {{-- <th>Category</th> --}}
                     <th>Project Number</th>
                     <th class="project-manager">Project Manager</th>
                     <th class="project-location">Project Location</th>
@@ -20,14 +30,14 @@
                     <th>Project Start</th>
                     <th>Project Finish</th>
                     <th class="project-picture">Project Picture</th>
-                    <th>Options</th>
+                    {{-- <th>Options</th> --}}
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $key => $project)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $project->category }}</td>
+                    {{-- <td>{{ $key + 1 }}</td> --}}
+                    {{-- <td>{{ $project->category }}</td> --}}
                     <td>{{ $project->project_number }}</td>
                     <td>{{ $project->project_manager }}</td>
                     <td>{{ $project->project_location }}</td>
@@ -44,14 +54,14 @@
                             No Image
                         @endif
                     </td>
-                    <td>
+                    {{-- <td>
                         <a href="{{ route('project.edit', $project) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>
@@ -74,30 +84,9 @@
 @endsection
 
 @push('styles')
-<style>
-    .project-description {
-        max-width: 1000px; /* Atur sesuai kebutuhan */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+    
+@endpush
 
-    .project-manager {
-        max-width: 1000px; /* Atur sesuai kebutuhan */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .project-location {
-        max-width: 1000px; /* Atur sesuai kebutuhan */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .project-picture img {
-        max-width: 300px; /* Atur sesuai kebutuhan */
-        max-height: 150px; /* Atur sesuai kebutuhan */
-    }
-</style>
+@push('script')
+    
 @endpush

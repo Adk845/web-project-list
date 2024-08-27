@@ -73,52 +73,9 @@
 @endsection
 
 @push('styles')
-    <style>
-        .form-container {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: black;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            background-color: white;
-            color: black;
-        }
-        button {
-            background-color: #E8BE28;
-            color: #000;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #d6a62d;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+@endpush
 
-<script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function(){
-            var output = document.getElementById('image_preview');
-            output.src = reader.result;
-            output.style.display = 'block';
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
-
+@push('script')
+    <script src="{{ asset('js/create.js') }}"></script>
 @endpush

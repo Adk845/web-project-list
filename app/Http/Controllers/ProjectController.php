@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Project_list;
 
 class ProjectController extends Controller
 {
     // Menampilkan daftar proyek
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project_list::all();
     return view('project.index', [
         'projects' => $projects
     ]);
@@ -18,7 +19,7 @@ class ProjectController extends Controller
 
     public function index2()
     {
-        $projects = Project::all();
+        $projects = Project_list::all();
         return view('tampilan', [
             'projects' => $projects
         ]);
@@ -50,7 +51,7 @@ public function store(Request $request)
     ]);
 
     // Menyimpan data ke database
-    $project = new Project();
+    $project = new Project_list();
     $project->category = $request->category;
     $project->project_number = $request->project_number;
     $project->project_manager = $request->project_manager;
@@ -75,19 +76,19 @@ public function store(Request $request)
 
 
     // Menampilkan form edit proyek
-    public function edit(Project $project)
+    public function edit(Project_list $project)
     {
         return view('project.edit', compact('project'));
     }
 
     // Memperbarui proyek
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Project_list $project)
     {
         // Validasi dan pembaruan proyek
     }
 
     // Menghapus proyek
-    public function destroy(Project $project)
+    public function destroy(Project_list $project)
     {
         // Penghapusan proyek
     }
