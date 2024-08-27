@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('tampilan');
 });
+
+Route::get('/', [ProjectController::class, 'index2'])->name('tampilan');
+ Route::resource('project', ProjectController::class)->middleware('auth');
+
+
+    // Route untuk menampilkan form login
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+
+    // Route untuk memproses login
+    Route::post('/login', [AuthController::class, 'login']);
+
+    // Route untuk logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
