@@ -37,7 +37,7 @@ public function store(Request $request)
 {
     // Validasi data
     $request->validate([
-        'category' => 'required|string|max:255',
+        // 'category' => 'required|string|max:255',
         'project_number' => 'required|string|max:255',
         'project_manager' => 'required|string|max:255',
         'project_location' => 'required|string|max:255',
@@ -45,22 +45,22 @@ public function store(Request $request)
         'project_start' => 'required|date',
         'project_finish' => 'required|date',
         'project_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'sector' => 'required|string|max:255',
-        'service' => 'required|string|max:255',
+        'sector' => 'required|array',
+        'service' => 'required|array',
         'project_description' => 'required|string',
     ]);
 
     // Menyimpan data ke database
     $project = new Project_list();
-    $project->category = $request->category;
+    // $project->category = $request->category;
     $project->project_number = $request->project_number;
     $project->project_manager = $request->project_manager;
     $project->project_location = $request->project_location;
     $project->client = $request->client;
     $project->project_start = $request->project_start;
     $project->project_finish = $request->project_finish;
-    $project->sector = $request->sector;
-    $project->service = $request->service;
+    $project->sector =  implode(', ', $request->sector);
+    $project->service =implode(', ', $request->service);
     $project->project_description = $request->project_description;
 
     // Mengupload gambar jika ada
