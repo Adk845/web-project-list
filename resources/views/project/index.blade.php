@@ -44,15 +44,35 @@
                     <td>{{ $project->client }}</td>
                     <td>{{ $project->sector }}</td>
                     <td>{{ $project->service }}</td>
-                    <td class="project-description">{{ $project->project_description }}</td>
-                    <td>{{ $project->project_start->format('d-m-Y') }}</td>
+                    <td class="project-description"><p class="text-wrap">{{ $project->project_description }}</p></td>
+                    <td>{{ $project->project_start->format('d M Y') }}</td>
                     <td>{{ $project->project_finish->format('d-m-Y') }}</td>
                     <td class="project-picture">
+                        <div>
                         @if ($project->project_picture)
-                            <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail">
+                            {{-- <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail"> --}}
+                            <img src="{{ asset('project_images/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail">
                         @else
                             No Image
                         @endif
+                        </div>
+                        {{-- <div class="dropdown">
+                            <p class="dropdown-toggle" type="button" data-bs-toggle="dowpdown" aria-expanded="false">Options</p>
+                          <ul class="Dropdown-menu">
+                            <li>Edit</li>
+                            <li>Delete</li>
+                          </ul>  
+                        </div> --}}
+                        <div class="dropdown text-center">
+                            <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Dropdown button
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Edit</a></li>
+                              <li><a class="dropdown-item" href="#">Delete</a></li>
+                              <li><a class="dropdown-item" href="#">Download Anouncement</a></li>
+                            </ul>
+                          </div>
                     </td>
                     {{-- <td>
                         <a href="{{ route('project.edit', $project) }}" class="btn btn-warning btn-sm">Edit</a>
