@@ -20,7 +20,7 @@ class project_listFactory extends Factory
             'client' => $this->faker->company,
             'project_start' => $this->faker->date(),
             'project_finish' => $this->faker->date(),
-            'sector' => $this->faker->word,
+            'sector' => 'nickel, cooper, metal,',
             'service' => $this->faker->word,
             'project_picture' => 'sample.jpg',
             'project_description' => $this->faker->paragraph,

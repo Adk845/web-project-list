@@ -1,0 +1,16 @@
+.header_container{
+   display: flex;
+   width: 100%;
+
+}
+
+.navbar_container{
+    position: absolute;
+    right: 10px;
+}
+
+.image_navbar{
+    position: relative;
+    left: 100px;
+}
+

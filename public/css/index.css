@@ -141,3 +141,25 @@ footer {
     max-height: 150px; /* Atur sesuai kebutuhan */
 }
 
+.container_table{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+
+.table_responsive{
+    overflow-x:scroll;
+}
+
+.col-width-status{
+    width: 100px;
+}
+.col-width-sector{
+    width: 150px;
+}
+
+.col-width-service{
+    width: 150px;
+}
