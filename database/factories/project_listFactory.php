@@ -22,7 +22,7 @@ class project_listFactory extends Factory
             'project_finish' => $this->faker->date(),
             'sector' => $this->faker->word,
             'service' => $this->faker->word,
-            'project_picture' => $this->faker->word,
+            'project_picture' => 'sample.jpg',
             'project_description' => $this->faker->paragraph,
 
         ];

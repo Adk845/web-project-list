@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,6 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         \App\Models\Project_list::factory(10)->create();
+        
+        \App\Models\User::create([
+            'username' => 'admin',
+            'password' => Hash::make('123'),
+        ]);
+
+
     }
 
     
