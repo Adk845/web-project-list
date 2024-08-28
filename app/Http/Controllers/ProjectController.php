@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project;
+
 use App\Models\Project_list;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -37,7 +39,7 @@ public function store(Request $request)
 {
     // Validasi data
     $request->validate([
-        // 'category' => 'required|string|max:255',
+        'status' => 'required|string|max:255',
         'project_number' => 'required|string|max:255',
         'project_manager' => 'required|string|max:255',
         'project_location' => 'required|string|max:255',
@@ -52,7 +54,7 @@ public function store(Request $request)
 
     // Menyimpan data ke database
     $project = new Project_list();
-    // $project->category = $request->category;
+    $project->status = $request->status;
     $project->project_number = $request->project_number;
     $project->project_manager = $request->project_manager;
     $project->project_location = $request->project_location;
@@ -76,22 +78,79 @@ public function store(Request $request)
 
 
     // Menampilkan form edit proyek
-    public function edit(Project_list $project)
+    public function edit($id)
     {
+        // Temukan proyek berdasarkan ID
+        $project = Project_list::findOrFail($id);
+    
+        // Pass data proyek ke tampilan edit
         return view('project.edit', compact('project'));
     }
+    
 
     // Memperbarui proyek
-    public function update(Request $request, Project_list $project)
+    public function update(Request $request, $id)
     {
-        // Validasi dan pembaruan proyek
+        // Validasi data
+        $request->validate([
+            'status' => 'required|string|in:On Progres,Finish', // Validate against allowed values
+            'project_number' => 'required|string|max:255',
+            'project_manager' => 'required|string|max:255',
+            'project_location' => 'required|string|max:255',
+            'client' => 'required|string|max:255',
+            'project_start' => 'required|date',
+            'project_finish' => 'required|date',
+            'project_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'sector' => 'required|array',
+            'service' => 'required|array',
+            'project_description' => 'required|string',
+        ]);
+    
+        // Temukan proyek berdasarkan ID
+        $project = Project_list::findOrFail($id);
+    
+        // Update data proyek
+        $project->status = $request->status;
+        $project->project_number = $request->project_number;
+        $project->project_manager = $request->project_manager;
+        $project->project_location = $request->project_location;
+        $project->client = $request->client;
+        $project->project_start = $request->project_start;
+        $project->project_finish = $request->project_finish;
+        $project->sector = implode(', ', $request->sector); // Convert array to comma-separated string
+        $project->service = implode(', ', $request->service); // Ensure it's a string
+        $project->project_description = $request->project_description;
+    
+        // Cek jika file gambar diupload
+        // if ($request->hasFile('project_picture')) {
+        //     // Hapus gambar lama jika ada
+        //     if ($project->project_picture) {
+        //         \Storage::disk('public')->delete($project->project_picture);
+        //     }
+    
+        //     // Upload gambar baru
+        //     $project->project_picture = $request->file('project_picture')->store('project_pictures', 'public');
+        // }
+    
+        $project->save();
+    
+        return redirect()->route('project.index')->with('success', 'Project updated successfully');
     }
-
+    
     // Menghapus proyek
     public function destroy(Project_list $project)
     {
-        // Penghapusan proyek
+        // Menghapus gambar proyek jika ada
+        if ($project->project_picture) {
+            Storage::disk('public')->delete($project->project_picture);
+        }
+    
+        // Menghapus data proyek dari database
+        $project->delete();
+    
+        return redirect()->route('project.index')->with('success', 'Project deleted successfully');
     }
+    
 }
 
 

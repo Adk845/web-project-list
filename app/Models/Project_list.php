@@ -14,7 +14,7 @@ class Project_list extends Model
 
     // Tentukan kolom mana yang bisa diisi secara massal
     protected $fillable = [
-        // 'category',
+        'status',
         'project_number',
         'project_manager',
         'project_location',
