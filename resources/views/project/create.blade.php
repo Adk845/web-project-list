@@ -6,10 +6,10 @@
             <h1 class="text-center">Create Project</h1>
             <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="category">Category</label>
+                <!-- <div class="form-group">
+                    <label for="status">Category</label>
                     <input type="text" name="category" id="category" required>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="project_number">Project Number</label>
@@ -49,15 +49,44 @@
     </div>
 </div>
 
-                <div class="form-group">
-                    <label for="sector">Sector</label>
-                    <input type="text" name="sector" id="sector" required>
-                </div>
+<div class="form-group">
+    <label for="sector">Sector</label><br>
+    <input type="checkbox" name="sector[]" value="Nickel"> Nickel<br>
+    <input type="checkbox" name="sector[]" value="Power"> Power<br>
+    <input type="checkbox" name="sector[]" value="Coal"> Coal<br>
+    <input type="checkbox" name="sector[]" value="Oil & Gas"> Oil & Gas<br>
+    <input type="checkbox" name="sector[]" value="Tin"> Tin<br>
+    <input type="checkbox" name="sector[]" value="Metal"> Metal<br>
+    <input type="checkbox" name="sector[]" value="Gold"> Gold<br>
+    <input type="checkbox" name="sector[]" value="Infrastructure"> Infrastructure<br>
+    <input type="checkbox" name="sector[]" value="Building"> Building<br>
+    <input type="checkbox" name="sector[]" value="Haul Road"> Haul Road<br>
+</div>
 
-                <div class="form-group">
-                    <label for="service">Service</label>
-                    <input type="text" name="service" id="service" required>
-                </div>
+
+<div class="form-group">
+    <label for="service">Service</label><br>
+    <input type="checkbox" name="service[]" value="Feasibility Study"> Feasibility Study<br>
+    <input type="checkbox" name="service[]" value="Generation"> Generation<br>
+    <input type="checkbox" name="service[]" value="Detail Design "> Detail Design <br>
+    <input type="checkbox" name="service[]" value="Capex Opex"> Capex Opex<br>
+    <input type="checkbox" name="service[]" value="Oil & Gas"> Oil & Gas<br>
+    <input type="checkbox" name="service[]" value="Metal"> Metal<br>
+    <input type="checkbox" name="service[]" value="Gold"> Gold<br>
+    <input type="checkbox" name="service[]" value="Engineering Services"> Engineering Services<br>
+    <input type="checkbox" name="service[]" value="Coal Mine Development"> Coal Mine Development<br>
+    <input type="checkbox" name="service[]" value="Design & Drafting Service"> Design & Drafting Service<br>
+    <input type="checkbox" name="service[]" value="Minerals & Metals Development"> Minerals & Metals Development<br>
+    <input type="checkbox" name="service[]" value="Project Development & COntroction Service"> Project Development & COntroction Service<br>
+    <input type="checkbox" name="service[]" value="Steel Fabrication"> Steel Fabrication<br>
+    <input type="checkbox" name="service[]" value="Site COmmunications & IT System Design"> Site COmmunications & IT System Design<br>
+    <input type="checkbox" name="service[]" value="Feasibillity Studies & Technical Due Dligence"> Feasibillity Studies & Technical Due Dligence<br>
+    <input type="checkbox" name="service[]" value="Tearming with leading Cial Process Design Groups"> Tearming with leading Cial Process Design Groups<br>
+
+
+
+
+</div>
 
                 <div class="form-group">
                     <label for="project_description">Description</label>
