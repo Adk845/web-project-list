@@ -5,6 +5,7 @@
 <div class="row mb-4">
     <div class="col-12 d-flex justify-content-between">
         <!-- Tombol Tambah -->
+        <a href="{{ route('projects.pdfAll') }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
         <a href="{{ route('project.create') }}" class="btn btn-primary">Tambah Proyek</a>
 
         <!-- Tombol Import, Export, dan Download Template -->
