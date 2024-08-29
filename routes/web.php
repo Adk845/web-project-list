@@ -31,3 +31,5 @@ Route::get('/', [ProjectController::class, 'index2'])->name('tampilan');
 
     // Route untuk logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/projects/{project}/pdf', [ProjectController::class, 'generatePDF'])->name('projects.pdf');
