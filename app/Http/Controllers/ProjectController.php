@@ -70,9 +70,12 @@ class ProjectController extends Controller
 public function store(Request $request)
 {
     // Validasi data
+    // dd($request->all());
     $request->validate([
         'status' => 'required|string|max:255',
+       
         'project_number' => 'required|string|max:255',
+        'project_name' => 'required|string|max:255',
         'project_manager' => 'required|string|max:255',
         'project_location' => 'required|string|max:255',
         'client' => 'required|string|max:255',
@@ -88,6 +91,7 @@ public function store(Request $request)
     $project = new Project_list();
     $project->status = $request->status;
     $project->project_number = $request->project_number;
+    $project->project_name = $request->project_name;
     $project->project_manager = $request->project_manager;
     $project->project_location = $request->project_location;
     $project->client = $request->client;
@@ -124,9 +128,12 @@ public function store(Request $request)
     public function update(Request $request, $id)
     {
         // Validasi data
+        
+        // dd($request->all());
         $request->validate([
             'status' => 'required|string|in:On Progres,Finish', // Validate against allowed values
             'project_number' => 'required|string|max:255',
+            'project_name' => 'required|string|max:255',
             'project_manager' => 'required|string|max:255',
             'project_location' => 'required|string|max:255',
             'client' => 'required|string|max:255',
@@ -144,6 +151,7 @@ public function store(Request $request)
         // Update data proyek
         $project->status = $request->status;
         $project->project_number = $request->project_number;
+        $project->project_name = $request->project_name;
         $project->project_manager = $request->project_manager;
         $project->project_location = $request->project_location;
         $project->client = $request->client;
@@ -167,6 +175,7 @@ public function store(Request $request)
         $project->save();
     
         return redirect()->route('project.index')->with('success', 'Project updated successfully');
+        
     }
     
     // Menghapus proyek

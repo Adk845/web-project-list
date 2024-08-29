@@ -28,6 +28,10 @@
                 <label class="form-label" for="project_number">Project Number</label>
                 <input class="form-control" type="text" name="project_number" id="project_number" required>
             </div>
+            <div class="form-group">
+                <label class="form-label" for="project_name">Project Name</label>
+                <input class="form-control" type="text" name="project_name" id="project_name" required>
+            </div>
 
             <div class="form-group">
                 <label class="form-label" for="project_manager">Project Manager</label>
