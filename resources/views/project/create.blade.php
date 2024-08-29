@@ -4,6 +4,15 @@
 <div class="container">
     <div class="form-container">
         <h1 class="text-center">Create Project</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('project.store') }}"  method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -62,52 +71,52 @@
             <div class="form-group-checkbox">
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="nickel" id="nickel" value="nickel">
+                        <input class="form-check-input" type="checkbox" name="serctor[]" id="nickel" value="nickel">
                         <label class="form-check-label" for="nickel">Nickel</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Power" id="power" value="power">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="power" value="power">
                         <label class="form-check-label" for="power">Power</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Coal" id="coal" value="coal">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="coal" value="coal">
                         <label class="form-check-label" for="coal">Coal</label>
                     </div>
                 </div>
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="oil_gas" id="oil_gas" value="oil_gas">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="oil_gas" value="oil_gas">
                         <label class="form-check-label" for="oil_gas">Oil & Gas</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Tin" id="tin" value="tin">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="tin" value="tin">
                         <label class="form-check-label" for="tin">Tin</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Metal" id="metal" value="metal">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="metal" value="metal">
                         <label class="form-check-label" for="metal">Metal</label>
                     </div>
                 </div>
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Gold" id="gold" value="gold">
+                        <input class="form-check-input" type="checkbox" name="Gold" id="sector[]" value="gold">
                         <label class="form-check-label" for="gold">Gold</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Infrastructure" id="infrastructure" value="infrastructure">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="infrastructure" value="infrastructure">
                         <label class="form-check-label" for="infrastructure">Infrastructure</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Building" id="building" value="Building">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="building" value="Building">
                         <label class="form-check-label" for="building">Building</label>
                     </div>
                 </div>
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Haul Road" id="haul_road" value="haul_road">
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="haul_road" value="haul_road">
                         <label class="form-check-label" for="haul_road">Haul Road</label>
                     </div>
                 </div>
@@ -120,64 +129,64 @@
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="feasibility_study" id="feasibility_study" value="feasibility study">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="feasibility_study" value="feasibility study">
                         <label class="form-check-label" for="feasibility_study">Feasibility Study</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="power_generation" id="power_generation" value="power generation">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="power_generation" value="power generation">
                         <label class="form-check-label" for="power_generation">Power Generation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="detail_design" id="detail_design" value="detail design">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="detail_design" value="detail design">
                         <label class="form-check-label" for="detail_design">Detail Design</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="capex_opex" id="capex_opex" value="capex opex">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="capex_opex" value="capex opex">
                         <label class="form-check-label" for="capex_opex">Capex Opex</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="oil_gas_service" id="oil_gas_service" value="oil & gas">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="oil_gas_service" value="oil & gas">
                         <label class="form-check-label" for="oil_gas_service">Oil & Gas</label>
                     </div>
                 </div>
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="engineering_services" id="engineering_services" value="engineering services">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="engineering_services" value="engineering services">
                         <label class="form-check-label" for="engineering_services">Engineering services</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="coal_mine_development" id="coal_mine_development" value="coal mine development">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="coal_mine_development" value="coal mine development">
                         <label class="form-check-label" for="coal_mine_development">Coal Mine Development</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="design_drafting_service" id="design_drafting_service" value="design & drafting service">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="design_drafting_service" value="design & drafting service">
                         <label class="form-check-label" for="design_drafting_service">Design & Drafting Service</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="minerals_metals_development" id="minerals_metals_development" value="minerals & metals development">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="minerals_metals_development" value="minerals & metals development">
                         <label class="form-check-label" for="minerals_metals_development">Minerals & Metals Development</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="project_development_construction_service" id="project_development_construction_service" value="project development & construction service">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="project_development_construction_service" value="project development & construction service">
                         <label class="form-check-label" for="project_development_construction_service">Project Development & Construction Service</label>
                     </div>
                 </div>
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="steel_fabrication_management" id="steel_fabrication_management" value="steel fabrication management">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="steel_fabrication_management" value="steel fabrication management">
                         <label class="form-check-label" for="steel_fabrication_management">Steel Fabrication Management</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="site_comunication" id="site_comunication" value="site comunication & it system design">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="site_comunication" value="site comunication & it system design">
                         <label class="form-check-label" for="site_comunication">Site Comunication & IT System Design</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="feasibility_studies_technical_due_diligence" id="feasibility_studies_technical_due_diligence" value="feasibility studies & technical due diligence">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="feasibility_studies_technical_due_diligence" value="feasibility studies & technical due diligence">
                         <label class="form-check-label" for="feasibility_studies_technical_due_diligence">Feasibility Studies & Technical Due Diligence</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="teaming_with_leading_coal_process_design_groups" id="teaming_with_leading_coal_process_design_groups" value="teaming with leading coal process design groups">
+                        <input class="form-check-input" type="checkbox" name="service[]" id="teaming_with_leading_coal_process_design_groups" value="teaming with leading coal process design groups">
                         <label class="form-check-label" for="teaming_with_leading_coal_process_design_groups">Teaming with Leading Coal Process Design Groups</label>
                     </div>
                     
