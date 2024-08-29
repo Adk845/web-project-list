@@ -59,33 +59,25 @@
                             No Image
                         @endif
                         </div>
-                        {{-- <div class="dropdown">
-                            <p class="dropdown-toggle" type="button" data-bs-toggle="dowpdown" aria-expanded="false">Options</p>
-                          <ul class="Dropdown-menu">
-                            <li>Edit</li>
-                            <li>Delete</li>
-                          </ul>  
-                        </div> --}}
+                        
+                    </td>
+                    <td>
                         <div class="dropdown text-center">
                             <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                               Dropdown button
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Edit</a></li>
-                              <li><a class="dropdown-item" href="#">Delete</a></li>
-                              <li><a class="dropdown-item" href="#">Download Anouncement</a></li>
+                              <li><a href="{{ route('project.edit', $project) }}" class="dropdown-item">Edit</a></li>
+                              <li>
+                                <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form>
+                            </li>
+                              <li><a href="{{ route('projects.pdf', $project->id) }}" class="dropdown-item">Download PDF</a></li>
                             </ul>
-                          </div>
-                    </td>
-                    <td>
-                        <a href="{{ route('project.edit', $project) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="{{ route('projects.pdf', $project->id) }}" class="btn btn-warning btn-sm">Download PDF</a>
-
-                        <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
