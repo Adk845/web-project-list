@@ -23,8 +23,8 @@ class ProjectList extends Migration
             $table->date('project_start');
             $table->date('project_finish');
             $table->string('project_picture',100);
-            $table->string('sector',100);
-            $table->string('service',100);
+            $table->text('sector');
+            $table->text('service');
             $table->text('project_description');
             $table->timestamps();
         });
