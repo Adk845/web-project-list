@@ -109,8 +109,13 @@
                     </div>
                 </td>
                 <td class="kanan_gambar">
+                    
                     <div class="gambar" style="width: 200; height: 200px; border: 1px solid black;">
-                       
+                    @if ($projects[0]->project_picture)
+                        <img src="{{ public_path('storage/' . $projects[0]->project_picture) }}" width="100px"  alt="Project Picture">
+                        @else
+                        No Image
+                        @endif
                     </div>
                 </td>
             </tr>
