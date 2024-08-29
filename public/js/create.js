@@ -1,3 +1,4 @@
+import Trix from "trix"
 function previewImage(event) {
     var reader = new FileReader();
     reader.onload = function(){
@@ -7,3 +8,8 @@ function previewImage(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
 }
+
+
+
+
+
