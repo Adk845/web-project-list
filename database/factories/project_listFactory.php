@@ -16,6 +16,7 @@ class project_listFactory extends Factory
         return [
             'status' => $this->faker->randomElement(['on progress', 'finished']),
             'project_number' => mt_rand(200, 300),
+            'project_name' => $this->faker->word,
             'project_location' => $this->faker->city . ", " . $this->faker->country,
             'project_manager' => $this->faker->name,
             'client' => $this->faker->company,

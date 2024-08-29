@@ -47,7 +47,7 @@
                     <td>{{ $project->client }}</td>
                     <td>{{ $project->sector }}</td>
                     <td>{{ $project->service }}</td>
-                    <td class="project-description"><p class="text-wrap">{{ $project->project_description }}</p></td>
+                    <td class="project-description"><p class="text-wrap">{{!! $project->project_description !!}}</p></td>
                     <td>{{ $project->project_start->format('d M Y') }}</td>
                     <td>{{ $project->project_finish->format('d-m-Y') }}</td>
                     <td class="project-picture">
