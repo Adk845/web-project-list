@@ -74,14 +74,16 @@
                             </ul>
                           </div>
                     </td>
-                    {{-- <td>
+                    <td>
                         <a href="{{ route('project.edit', $project) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('projects.pdf', $project->id) }}" class="btn btn-warning btn-sm">Download PDF</a>
+
                         <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                         </form>
-                    </td> --}}
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

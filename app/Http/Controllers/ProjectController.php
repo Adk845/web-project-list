@@ -1,7 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 use App\Models\Project_list;
@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
+
+    public function generatePdf($id)
+    {
+        // Fetch the project by ID
+        $projects = Project_list::find($id);
+    
+        // Check if the project exists
+        if (!$projects) {
+            return redirect()->route('project.index')->with('error', 'Project not found.');
+        }
+    
+        // Generate the PDF (assuming $projects is an array or collection of projects)
+        $pdf = PDF::loadView('project.pdf', ['projects' => [$projects]]);
+    
+        // Return the generated PDF
+        return $pdf->download('project-list.pdf');
+    }
+    
     // Menampilkan daftar proyek
     public function index()
     {
