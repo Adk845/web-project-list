@@ -1,6 +1,27 @@
-.body{
-    background-color: black;
+/* NAVBAR ATAS */
+header{
+   position: sticky;
+   top: 0;
+   
 }
+
+.container_navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar_brand_div{
+    position: relative;
+    left: 100px;
+}
+
+.navbar_div{
+    position: relative;
+    right: 0px;
+}
+
 
 /*SIDEBAR NAVBAR */
 
@@ -140,4 +161,7 @@ footer {
     max-width: 300px; /* Atur sesuai kebutuhan */
     max-height: 150px; /* Atur sesuai kebutuhan */
 }
+
+
+
 
