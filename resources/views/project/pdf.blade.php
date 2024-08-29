@@ -1,45 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    {{-- <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/pdf.css')}}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> --}}
+    {{-- <link rel="stylesheet" href="{{asset('css/pdf.css')}}"> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+
+    <style>
+                
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .header{
+            
+        }
+
+        h1{
+            text-align: center
+        }
+
+        table, tr, td{
+            border: none;
+
+        }
+        table{
+            
+        }
+        .title_konten{
+            width: 20%;
+        }
+        .konten{
+            
+        }
+        .project_description_div{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .project_description{
+            /* text-wrap: wrap; */
+        }
+
+        .gambar{
+            display: flex;
+        }
+
+
+
+    </style>
     <title>Document</title>
 </head>
 <body>
-    <div class="header">
-        <h1 class="text-center">Project Anouncement {{$projects[0]->status}} </h1>
+    {{-- <div class="header">
+        
+    </div> --}}
+    <div style="width: 100%; height: 100px; border: 1px solid black; position:relative; top: 5px;">
+        <h1>Project Anouncement</h1>
     </div>
     
-    <table>
-        <thead>
+    
+    <div class="container_konten" style="display: flex; flex-direction: row;">
+        <table>
             <tr>
-                <th>ID</th>
-                <th>Status</th>
-                <th>Project Number</th>
-                <th>Project Manager</th>
-                <th>Location</th>
-                <th>Client</th>
-                <th>Start Date</th>
-                <th>Finish Date</th>
+                <td class="kiri_tulisan">
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="title_konten">Name of The Project</td>
+                                <td class="konten">: {{$projects[0]->project_name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title_konten">Project Number</td>
+                                <td class="konten">: {{$projects[0]->project_number}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title_konten">Project Manager</td>
+                                <td class="konten">: {{$projects[0]->project_manager}}</td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align: top">Project Brief</td>
+                                <td>: {{!! $projects[0]->project_description !!}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title_konten">Project Location</td>
+                                <td class="konten">: {{$projects[0]->project_location}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title_konten">Starting / End Date</td>
+                                <td class="konten">: {{$projects[0]->project_start->format('d M Y')}} - {{$projects[0]->project_finish->format('d M Y')}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td class="kanan_gambar">
+                    <div class="gambar" style="width: 200; height: 200px; border: 1px solid black;">
+                       
+                    </div>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($projects as $project)
-            <tr>
-                <td>{{ $project->id }}</td>
-                <td>{{ $project->status }}</td>
-                <td>{{ $project->project_number }}</td>
-                <td>{{ $project->project_manager }}</td>
-                <td>{{ $project->project_location }}</td>
-                <td>{{ $project->client }}</td>
-                <td>{{ $project->project_start }}</td>
-                <td>{{ $project->project_finish }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        </table>
+    </div>
+
+    <div style="width: 130px; height: 100px; position: absolute; bottom: 0px; right: 500px">
+        <h5 style="margin: 0px">Simon Birch</h5>
+        <hr>
+        <p style="margin: 0px">President Director</p>
+    </div>
+    {{-- <div style="width: 100%; height: 100px; border: 1px solid black; position:absolute; bottom: 5px;">
+        
+    </div> --}}
 </body>
 </html>
