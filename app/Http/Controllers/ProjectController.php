@@ -27,6 +27,19 @@ class ProjectController extends Controller
         // Return the generated PDF
         return $pdf->download('project-list.pdf');
     }
+
+    public function generatePdfAll()
+    {
+        $projects = Project_list::all();
+        if ($projects->isEmpty()) {
+            return redirect()->route('project.index')->with('error', 'No projects found.');
+        }
+        $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects]);
+        return $pdf->download('all-projects.pdf');
+    }
+
+
+    
     
     // Menampilkan daftar proyek
     public function index()

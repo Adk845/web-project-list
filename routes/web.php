@@ -33,3 +33,6 @@ Route::get('/', [ProjectController::class, 'index2'])->name('tampilan');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/projects/{project}/pdf', [ProjectController::class, 'generatePDF'])->name('projects.pdf');
+     Route::get('/projects/pdf/all', [ProjectController::class, 'generatePdfAll'])->name('projects.pdfAll');
+
+    
