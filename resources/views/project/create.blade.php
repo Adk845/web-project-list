@@ -190,8 +190,9 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="project_description">Description</label>
-                <textarea class="form-control" name="project_description" id="project_description" rows="4" required></textarea>
+                <label class="form-label" for="project_description">Description</label> 
+                <input id="project_description" type="hidden" name="project_description">
+                <trix-editor input="project_description"></trix-editor>
             </div>
 
             <div class="text-center">
@@ -203,9 +204,12 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css"> {{-- library untuk text editor --}}
 @endpush
 
 @push('script')
-<script src="{{ asset('js/create.js') }}"></script>
+    
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script> {{-- library untuk text editor --}}
+    <script src="{{ asset('js/create.js') }}"></script>
 @endpush
