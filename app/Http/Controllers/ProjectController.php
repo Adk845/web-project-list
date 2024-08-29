@@ -22,10 +22,11 @@ class ProjectController extends Controller
         }
     
         // Generate the PDF (assuming $projects is an array or collection of projects)
-        $pdf = PDF::loadView('project.pdf', ['projects' => [$projects]]);
+        $pdf = PDF::loadView('project.pdf', ['projects' => [$projects]])
+        ->setPaper('a4', 'landscape');
     
         // Return the generated PDF
-        return $pdf->download('project-list.pdf');
+        return $pdf->stream('project-list.pdf');
     }
 
     public function generatePdfAll()
@@ -34,12 +35,12 @@ class ProjectController extends Controller
         if ($projects->isEmpty()) {
             return redirect()->route('project.index')->with('error', 'No projects found.');
         }
-        $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects]);
+        $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects])
+               ->setPaper('a3', 'landscape');
         return $pdf->download('all-projects.pdf');
     }
 
 
-    
     
     // Menampilkan daftar proyek
     public function index()
