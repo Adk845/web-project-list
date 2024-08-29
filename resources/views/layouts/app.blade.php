@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Project List - Admin')</title>
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> --}}
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @stack('styles')
@@ -17,32 +17,37 @@
 <body>
     <!-- Header -->
     <header class="bg-dark text-white p-3">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <a href="/" class="navbar-brand">
-                    <img src="{{ asset('images/logo.png') }}" alt="RESINDO Logo" style="height: 40px;">
-                </a>
-                <nav>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a></li>
+        <div class="container-fluid">
+            {{-- <div class="d-flex justify-content-between align-items-center"> --}}
+            <div class="container_navbar">
+                <div class="navbar_brand_div">
+                    <a href="/" class="navbar-brand">
+                        <img src="{{ asset('images/logo.png') }}" alt="RESINDO Logo" style="height: 40px;">
+                    </a>
+                </div>
+                <div class="navbar_div">
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a></li>
 
-                        @auth
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
-                        @endauth
-                        @guest
-                            <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Register</a></li>
-                        @endguest
-                    </ul>
-                </nav>
+                            @auth
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @endauth
+                            @guest
+                                <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Register</a></li>
+                            @endguest
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </header>
