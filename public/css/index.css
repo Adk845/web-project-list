@@ -2,6 +2,7 @@
 header{
    position: sticky;
    top: 0;
+   z-index: 2;
    
 }
 
@@ -48,6 +49,7 @@ body, html {
     top: 0;
     bottom: 0;
     overflow: hidden; /* Prevent scrollbars */
+    z-index: 4;
 }
 
 .sidebar-collapsed {
