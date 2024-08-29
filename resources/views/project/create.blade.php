@@ -7,18 +7,14 @@
         <form action="{{ route('project.store') }}"  method="POST" enctype="multipart/form-data">
             @csrf
 
-        <div class="form-group">
-            <label for="status form-label">Status</label>
-            <select class="form-select" name="status" id="status" required>
-                <option value="On Progres">On Progres</option>
-                <option value="Finish">Finish</option>
-            </select>
-        </div>
-            <!-- <div class="form-group">
-                <label for="status">Category</label>
-                <input type="text" name="category" id="category" required>
-            </div> -->
-
+            <div class="form-group">
+                <label for="status form-label">Status</label>
+                <select class="form-select" name="status" id="status" required>
+                    <option value="On Progres">On Progres</option>
+                    <option value="Finish">Finish</option>
+                </select>
+            </div>
+    
             <div class="form-group">
                 <label class="form-label" for="project_number">Project Number</label>
                 <input class="form-control" type="text" name="project_number" id="project_number" required>
