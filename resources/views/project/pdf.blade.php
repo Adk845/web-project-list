@@ -8,9 +8,20 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
 
     <style>
-                
+                {{-- <img src="{{ public_path('/images/template.jpg')}}" width="100%"> --}}
         body {
             font-family: Arial, sans-serif;
+            padding-left: 20px;
+            margin: 0x;
+            background-image: url({{public_path('images/template.jpg')}});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .overley {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5)
         }
         table {
             width: 100%;
@@ -20,7 +31,7 @@
             border: 1px solid black;
         }
         th, td {
-            padding: 10px;
+            padding: 0px;
             text-align: left;
         }
         th {
@@ -59,7 +70,9 @@
 
         .gambar{
             display: flex;
+            padding-top: 50px;
         }
+     
 
 
 
@@ -67,10 +80,11 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="overley">
     {{-- <div class="header">
         
     </div> --}}
-    <div style="width: 100%; height: 100px; border: 1px solid black; position:relative; top: 5px;">
+    <div style="width: 100%; height: 90px; position:relative; top: 5px;">
         <h1>Project Anouncement</h1>
     </div>
     
@@ -95,7 +109,7 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: top">Project Brief</td>
-                                <td>: {{!! $projects[0]->project_description !!}}</td>
+                                <td>: {!! $projects[0]->project_description !!}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Project Location</td>
@@ -110,9 +124,10 @@
                 </td>
                 <td class="kanan_gambar">
                     
-                    <div class="gambar" style="width: 200; height: 200px; border: 1px solid black;">
+                    <div class="gambar" style="width: 200; height: 200px; ">
                     @if ($projects[0]->project_picture)
-                        <img src="{{ public_path('storage/' . $projects[0]->project_picture) }}" width="100px"  alt="Project Picture">
+                        <img src="{{ public_path('storage/' . $projects[0]->project_picture) }}" width="100%"  alt="Project Picture">
+                        
                         @else
                         No Image
                         @endif
@@ -130,5 +145,7 @@
     {{-- <div style="width: 100%; height: 100px; border: 1px solid black; position:absolute; bottom: 5px;">
         
     </div> --}}
+
+    </div>
 </body>
 </html>
