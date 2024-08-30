@@ -24,37 +24,58 @@
                     {{-- <th>No.</th> --}}
                     {{-- <th>Category</th> --}}
                     <th>Project Number</th>
-                    <th class="project-manager">Project Manager</th>
-                    <th class="project-location">Project Location</th>
-                    <th>Client</th>
-                    <th>Sector</th>
-                    <th>Service</th>
-                    <th class="project-description">Project Description</th>
-                    <th>Project Start</th>
-                    <th>Project Finish</th>
-                    <th class="project-picture">Project Picture</th>
+                    <th class="project_manager">Project Manager</th>
+                    <th class="project_location">Project Location</th>
+                    <th class="client">Client</th>
+                    <th class="sector">Sector</th>
+                    <th class="services">Service</th>
+                    <th class="project_description">Project Description</th>
+                    <th class="project_start">Project Start</th>
+                    <th class="project_finish">Project Finish</th>
+                    <th class="project_picture">Project Picture</th>
                     {{-- <th>Options</th> --}}
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $key => $project)
+                <?php 
+                $sektors[] = explode(", ",$project['sector']); 
+                $services[] = explode(", ",$project['service']);
+                
+                ?>
                 <tr>
                     {{-- <td>{{ $key + 1 }}</td> --}}
                     {{-- <td>{{ $project->category }}</td> --}}
-                    <td>{{ $project->project_number }}</td>
-                    <td>{{ $project->project_manager }}</td>
-                    <td>{{ $project->project_location }}</td>
-                    <td>{{ $project->client }}</td>
-                    <td>{{ $project->sector }}</td>
-                    <td>{{ $project->service }}</td>
-                    <td class="project-description"><p class="text-wrap">{{!! $project->project_description !!}}</p></td>
-                    <td>{{ $project->project_start->format('d M Y') }}</td>
-                    <td>{{ $project->project_finish->format('d-m-Y') }}</td>
-                    <td class="project-picture">
+                    <td >{{ $project->project_number }}</td>
+                    <td >{{ $project->project_manager }}</td>
+                    <td >{{ $project->project_location }}</td>
+                    <td >{{ $project->client }}</td>
+                    {{-- <td >{{ $project->sector }}</td> --}}
+                    <td >
+                        <ul>
+                            <?php foreach($sektors[0] as $sektor) :?>
+                           
+                            <li><?php echo $sektor ?></li>
+                            <?php endforeach?>
+                        </ul>
+                    </td>
+                    {{-- <td >{{ $project->service }}</td> --}}
+                    <td >
+                        <?php var_dump($services[0]) ?>
+                        {{-- <ul>
+                            <?php foreach($services[0] as $service) :?>
+                            <li><?php echo $service ?></li>
+                            <?php endforeach?>
+                        </ul> --}}
+                    </td>
+                    <td ><p class="">{!! $project->project_description !!}</p></td>
+                    <td >{{ $project->project_start->format('d M Y') }}</td>
+                    <td >{{ $project->project_finish->format('d-m-Y') }}</td>
+                    <td >
                         <div>
                         @if ($project->project_picture)
-                            {{-- <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail"> --}}
-                            <img src="{{ asset('project_images/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail">
+                            <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail">
+                            {{-- <img src="{{ asset('project_images/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail"> --}}
                         @else
                             No Image
                         @endif

@@ -22,11 +22,14 @@ class project_listFactory extends Factory
             'client' => $this->faker->company,
             'project_start' => $this->faker->date(),
             'project_finish' => $this->faker->date(),
-            'sector' => $this->faker->word,
-            'service' => $this->faker->word,
+            'sector' => 'nickel, power, coal, oil_gas, tin',
+            'service' => 'feasibility_study',
             'project_picture' => 'sample.jpg',
-            'project_description' => $this->faker->paragraph,
+            'project_description' => '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, eveniet veniam possimus ad aliquam consectetur?&nbsp;<br>Delectus officiis reiciendis pariatur nesciunt ab iusto placeat minus omnis labore laborum, in, v<br>eniam numquam esse voluptate adipisci.</div><ul><li>satu</li><li>dua</li><li>tiga</li><li>empat</li></ul>',
+            // 'project_description' => $this->faker->paragraph,
 
         ];
     }
 }
+
+
