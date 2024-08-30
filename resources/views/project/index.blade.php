@@ -50,23 +50,22 @@
                     <td >{{ $project->project_manager }}</td>
                     <td >{{ $project->project_location }}</td>
                     <td >{{ $project->client }}</td>
-                    {{-- <td >{{ $project->sector }}</td> --}}
-                    <td >
-                        <ul>
-                            <?php foreach($sektors[0] as $sektor) :?>
-                           
-                            <li><?php echo $sektor ?></li>
-                            <?php endforeach?>
+                    <td>
+                        @if ($project->sector)
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            @foreach(explode(',', $project->sector) as $item)
+                            <li>{{ trim($item) }}</li>
+                            @endforeach
                         </ul>
-                    </td>
-                    {{-- <td >{{ $project->service }}</td> --}}
-                    <td >
-                        <?php var_dump($services[0]) ?>
-                        {{-- <ul>
-                            <?php foreach($services[0] as $service) :?>
-                            <li><?php echo $service ?></li>
-                            <?php endforeach?>
-                        </ul> --}}
+                        @endif
+                        <td>
+                        @if ($project->service)
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            @foreach(explode(',', $project->service) as $item)
+                            <li>{{ trim($item) }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
                     </td>
                     <td ><p class="">{!! $project->project_description !!}</p></td>
                     <td >{{ $project->project_start->format('d M Y') }}</td>

@@ -5,15 +5,15 @@
     <div class="form-container">
         <h1 class="text-center">Create Project</h1>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
-        <form action="{{ route('project.store') }}"  method="POST" enctype="multipart/form-data">
+        <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
@@ -23,7 +23,7 @@
                     <option value="Finish">Finish</option>
                 </select>
             </div>
-    
+
             <div class="form-group">
                 <label class="form-label" for="project_number">Project Number</label>
                 <input class="form-control" type="text" name="project_number" id="project_number" required>
@@ -62,66 +62,65 @@
                 <label class="form-label" for="project_picture">Project Image (optional)</label>
                 <input class="form-control" type="file" name="project_picture" id="project_picture" accept="image/*" onchange="previewImage(event)">
                 <div class="mt-3">
-                    <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-height: 200px;">
+                    <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-height: 200px;">  
                 </div>
             </div>
 
-            
+
             <h4 class="mb-2">Sector</h4>
-            <div class="form-group-checkbox">
-                <div class="checkbox-container">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="serctor[]" id="nickel" value="nickel">
-                        <label class="form-check-label" for="nickel">Nickel</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="power" value="power">
-                        <label class="form-check-label" for="power">Power</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="coal" value="coal">
-                        <label class="form-check-label" for="coal">Coal</label>
-                    </div>
+        <div class="form-group-checkbox">
+            <div class="checkbox-container">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="nickel" value="nickel">
+                    <label class="form-check-label" for="nickel">Nickel</label>
                 </div>
-
-                <div class="checkbox-container">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="oil_gas" value="oil_gas">
-                        <label class="form-check-label" for="oil_gas">Oil & Gas</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="tin" value="tin">
-                        <label class="form-check-label" for="tin">Tin</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="metal" value="metal">
-                        <label class="form-check-label" for="metal">Metal</label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="power" value="power">
+                    <label class="form-check-label" for="power">Power</label>
                 </div>
-
-                <div class="checkbox-container">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Gold" id="sector[]" value="gold">
-                        <label class="form-check-label" for="gold">Gold</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="infrastructure" value="infrastructure">
-                        <label class="form-check-label" for="infrastructure">Infrastructure</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="building" value="Building">
-                        <label class="form-check-label" for="building">Building</label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="coal" value="coal">
+                    <label class="form-check-label" for="coal">Coal</label>
                 </div>
-
-                <div class="checkbox-container">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="haul_road" value="haul_road">
-                        <label class="form-check-label" for="haul_road">Haul Road</label>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="checkbox-container">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="oil_gas" value="oil_gas">
+                    <label class="form-check-label" for="oil_gas">Oil & Gas</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="tin" value="tin">
+                    <label class="form-check-label" for="tin">Tin</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="metal" value="metal">
+                    <label class="form-check-label" for="metal">Metal</label>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="gold" value="gold">
+                    <label class="form-check-label" for="gold">Gold</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="infrastructure" value="infrastructure">
+                    <label class="form-check-label" for="infrastructure">Infrastructure</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="building" value="building">
+                    <label class="form-check-label" for="building">Building</label>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="sector[]" id="haul_road" value="haul_road">
+                    <label class="form-check-label" for="haul_road">Haul Road</label>
+                </div>
+            </div>
+        </div>
 
             <h4 class="mb-2">Services</h4>
             <div class="form-group-services">
@@ -189,7 +188,7 @@
                         <input class="form-check-input" type="checkbox" name="service[]" id="teaming_with_leading_coal_process_design_groups" value="teaming with leading coal process design groups">
                         <label class="form-check-label" for="teaming_with_leading_coal_process_design_groups">Teaming with Leading Coal Process Design Groups</label>
                     </div>
-                    
+
                 </div>
 
 
@@ -199,7 +198,7 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="project_description">Description</label> 
+                <label class="form-label" for="project_description">Description</label>
                 <input id="project_description" type="hidden" name="project_description">
                 <trix-editor input="project_description"></trix-editor>
             </div>
@@ -213,12 +212,12 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css"> {{-- library untuk text editor --}}
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css"> {{-- library untuk text editor --}}
 @endpush
 
 @push('script')
-    
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script> {{-- library untuk text editor --}}
-    <script src="{{ asset('js/create.js') }}"></script>
+
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script> {{-- library untuk text editor --}}
+<script src="{{ asset('js/create.js') }}"></script>
 @endpush
