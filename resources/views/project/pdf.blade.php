@@ -30,6 +30,9 @@
         table, th, td {
             border: 1px solid black;
         }
+        td{
+            font-size: 16px;
+        }
         th, td {
             padding: 0px;
             text-align: left;
@@ -54,7 +57,7 @@
             
         }
         .title_konten{
-            width: 20%;
+            width: 25%;
         }
         .konten{
             
@@ -66,6 +69,11 @@
 
         .project_description{
             /* text-wrap: wrap; */
+            text-overflow: ellipsis;
+            height: 280px;
+            vertical-align: top;
+            /* max-height: 290px;
+            white-space: wrap; */
         }
 
         .gambar{
@@ -109,7 +117,7 @@
                             </tr>
                             <tr>
                                 <td style="vertical-align: top">Project Brief</td>
-                                <td>: {!! $projects[0]->project_description !!}</td>
+                                <td class="project_description">{!! $projects[0]->project_description !!}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Project Location</td>
