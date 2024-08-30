@@ -91,7 +91,7 @@
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="oil_gas" value="oil_gas" {{ in_array('oil_gas', $selectedSectors) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="oil_gas" value="Oil Gas" {{ in_array('oil_gas', $selectedSectors) ? 'checked' : '' }}>
                         <label class="form-check-label" for="oil_gas">Oil & Gas</label>
                     </div>
                     <div class="form-check">
