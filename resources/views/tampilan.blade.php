@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Project List</title>
 
     <!-- Fonts -->
@@ -13,53 +13,62 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #f5f5f5; /* Ganti menjadi abu muda */
-            color: #E8BE28;
+            background-color: #f5f5f5;
+            color: #000; /* Ganti menjadi hitam */
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 1500px;
             margin: 0 auto;
             padding: 20px;
         }
+
         .table-container {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            overflow-x: auto; /* Memastikan tabel dapat digeser horizontal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow lebih ringan */
+            overflow-x: auto;
         }
+
         table {
-            width: 100%; /* Memastikan tabel memenuhi lebar kontainer */
+            width: 100%;
             border-collapse: collapse;
         }
-        thead {
-            background-color: #E8BE28;
-            color: #000;
-        }
+
         th, td {
             padding: 12px;
-            text-align: left; /* Rata kiri teks pada tabel */
-            vertical-align: top; /* Rata atas teks pada tabel */
-            border: 1px solid #ddd; /* Garis pada sel tabel */
+            text-align: left;
+            vertical-align: top;
+            border: 1px solid #ddd; /* Hapus warna latar belakang pada header tabel */
         }
+
         th {
             font-weight: bold;
+            background-color: #d6a62d;
         }
+
         tbody tr:nth-child(even) {
-            background-color: #333;
+            background-color: #f9f9f9; /* Background ringan untuk baris genap */
         }
+
         tbody tr:hover {
-            background-color: #444;
+            background-color: #f1f1f1; /* Background ringan saat hover */
         }
+
+        
+
         a {
             color: #E8BE28;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .btn {
             background-color: #E8BE28;
             color: #000;
@@ -68,50 +77,57 @@
             border-radius: 4px;
             text-decoration: none;
         }
+
         .btn:hover {
             background-color: #d6a62d;
         }
+
         .login-links {
             text-align: right;
             padding: 20px;
         }
-        /* Styling for the table header */
+
         .table-container h1 {
-            color: #000; /* Warna hitam untuk judul */
+            color: #000;
             margin-top: 0;
-            margin-bottom: 20px; /* Jarak bawah untuk memberi ruang */
-            text-align: left; /* Atur posisi teks ke kiri */
+            margin-bottom: 20px;
+            text-align: left;
         }
-        /* Lebar kolom deskripsi */
+
         td.description {
-            max-width: 250px; /* Atur lebar maksimum kolom deskripsi */
+            max-width: 250px;
             overflow: hidden;
-            text-overflow: ellipsis; /* Tambahkan ellipsis jika teks terlalu panjang */
-            white-space: nowrap; /* Jangan biarkan teks terpotong ke baris berikutnya */
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
+
         td img {
-            max-width: 150px; /* Atur lebar maksimum gambar */
-            height: auto; /* Menjaga rasio gambar */
+            max-width: 150px;
+            height: auto;
         }
-        /* Media query untuk layar kecil */
+
         @media (max-width: 768px) {
             table, thead, tbody, th, td, tr {
                 display: block;
             }
+
             thead tr {
                 display: none;
             }
+
             tr {
                 border: 1px solid #ddd;
                 margin-bottom: 10px;
                 display: flex;
                 flex-direction: column;
             }
+
             td {
                 text-align: right;
                 padding-left: 50%;
                 position: relative;
             }
+
             td::before {
                 content: attr(data-label);
                 position: absolute;
@@ -122,8 +138,23 @@
                 text-align: left;
             }
         }
+
+        .status-finished {
+            background-color: green;
+            /* Green background for finished */
+            color: white;
+            /* Dark green text color */
+        }
+
+        .status-on-progress {
+            background-color: orange;
+            /* Yellow background for on progress */
+            color: white;
+            /* Dark yellow text color */
+        }
     </style>
 </head>
+
 <body class="antialiased">
     <div class="login-links">
         @if (Route::has('login'))
@@ -142,13 +173,12 @@
     <div class="container">
         <div class="table-container">
             <h1>Project List</h1>
-
             <table>
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>Category</th>
+                        <th>Status</th>
                         <th>Project Number</th>
+                        <th>Project Name</th>
                         <th>Project Manager</th>
                         <th>Project Location</th>
                         <th>Client</th>
@@ -163,15 +193,33 @@
                 <tbody>
                     @forelse ($projects as $key => $project)
                     <tr>
-                        <td data-label="No.">{{ $key + 1 }}</td>
-                        <td data-label="Category">{{ $project->category }}</td>
+                    <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progres' ? 'status-on-progress' : '') }}">
+                        {{ $project->status }}
+                    </td>
                         <td data-label="Project Number">{{ $project->project_number }}</td>
+                        <td data-label="Project Name">{{ $project->project_name }}</td>
                         <td data-label="Project Manager">{{ $project->project_manager }}</td>
                         <td data-label="Project Location">{{ $project->project_location }}</td>
                         <td data-label="Client">{{ $project->client }}</td>
-                        <td data-label="Sector">{{ $project->sector }}</td>
-                        <td data-label="Service">{{ $project->service }}</td>
-                        <td data-label="Description" class="description">{{ $project->project_description }}</td>
+                        <td>
+                            @if ($project->sector)
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                @foreach(explode(',', $project->sector) as $item)
+                                <li>{{ trim($item) }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($project->service)
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                @foreach(explode(',', $project->service) as $item)
+                                <li>{{ trim($item) }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </td>
+                        <td>{!! $project->project_description !!}</td>
                         <td data-label="Project Start">{{ $project->project_start->format('d-m-Y') }}</td>
                         <td data-label="Project Finish">{{ $project->project_finish->format('d-m-Y') }}</td>
                         <td data-label="Project Image">
@@ -192,4 +240,5 @@
         </div>
     </div>
 </body>
+
 </html>

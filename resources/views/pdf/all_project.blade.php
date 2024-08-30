@@ -113,14 +113,14 @@
         .status-finished {
             background-color: green;
             /* Green background for finished */
-            color: #155724;
+            color: white;
             /* Dark green text color */
         }
 
         .status-on-progress {
-            background-color: #fff3cd;
+            background-color: orange;
             /* Yellow background for on progress */
-            color: #856404;
+            color: white;
             /* Dark yellow text color */
         }
 
@@ -159,7 +159,7 @@
                 @forelse ($projects as $key => $project)
                 <tr>
                     <!-- <td>{{ $key + 1 }}</td> -->
-                    <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progress' ? 'status-on-progress' : '') }}">
+                    <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progres' ? 'status-on-progress' : '') }}">
                         {{ $project->status }}
                     </td>
                     <td>{{ $project->project_number }}</td>
@@ -207,7 +207,7 @@
 
     <div class="footer">
         <div class="page-number"></div>
-        <div class="title"><b>Engineering Projects for Community $ Environmental Sustainability</b></div>
+        <div class="title"><b>Engineering Projects for Community & Environmental Sustainability</b></div>
         <div class="title2">{{ date( 'Y') }}</div>
     </div>
 
