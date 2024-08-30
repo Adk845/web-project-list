@@ -41,7 +41,7 @@ class ProjectController extends Controller
 
 
         $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects])
-               ->setPaper('a3', 'landscape');
+               ->setPaper('a4', 'landscape');
         return $pdf->stream('all-projects.pdf');
     }
 

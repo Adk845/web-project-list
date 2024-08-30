@@ -20,22 +20,20 @@
 
         table {
             width: 100%;
-            margin: -20px;
             border-collapse: collapse;
+            font-size: 11px; /* Kecilkan ukuran font tabel */
         }
 
-        th,
-        td {
-            padding: 10px;
+        th, td {
+            padding: 5px; /* Kurangi padding sel */
             border: 1px solid #ddd;
             text-align: left;
         }
 
         th {
             background-color: #006ec1;
-
+            color: white;
         }
-
         img {
             max-width: 150px;
             height: auto;
@@ -43,7 +41,7 @@
 
         @media print {
             @page {
-                size: A3 landscape;
+                size: A4 landscape;
                 margin: 0;
             }
         }
@@ -71,10 +69,10 @@
 
         .header .title {
             text-align: right;
-            font-size: 25px;
+            font-size: 20px;
             color: black;
             margin-left: 20px;
-            margin-top: -60px;
+            margin-top: -40px;
         }
 
         .footer {
