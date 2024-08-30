@@ -67,13 +67,13 @@
             </div> -->
 
 
+            @php
+            // Mengubah sektor dari string kembali menjadi array menggunakan pemisah ', '
+            $selectedSectors = old('sector', isset($project->sector) ? explode(', ', $project->sector) : []);
+            @endphp
+
             <h4 class="mb-2">Sector</h4>
             <div class="form-group-checkbox">
-                @php
-                // Pastikan $project->sector adalah array
-                $selectedSectors = old('sector', isset($project->sector) ? explode(',', $project->sector) : []);
-                @endphp
-
                 <div class="checkbox-container">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="sector[]" id="nickel" value="nickel" {{ in_array('nickel', $selectedSectors) ? 'checked' : '' }}>
@@ -106,39 +106,38 @@
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="gold" value="gold" {{ in_array('gold', old('sector', $project->sectors ?? [])) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="gold" value="gold" {{ in_array('gold', $selectedSectors) ? 'checked' : '' }}>
                         <label class="form-check-label" for="gold">Gold</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="infrastructure" value="infrastructure" {{ in_array('infrastructure', old('sector', $project->sectors ?? [])) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="infrastructure" value="infrastructure" {{ in_array('infrastructure', $selectedSectors) ? 'checked' : '' }}>
                         <label class="form-check-label" for="infrastructure">Infrastructure</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="building" value="building" {{ in_array('building', old('sector', $project->sectors ?? [])) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="building" value="Building" {{ in_array('Building', $selectedSectors) ? 'checked' : '' }}>
                         <label class="form-check-label" for="building">Building</label>
                     </div>
                 </div>
 
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="sector[]" id="haul_road" value="haul_road" {{ in_array('haul_road', old('sector', $project->sectors ?? [])) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="sector[]" id="haul_road" value="haul_road" {{ in_array('haul_road', $selectedSectors) ? 'checked' : '' }}>
                         <label class="form-check-label" for="haul_road">Haul Road</label>
                     </div>
                 </div>
             </div>
 
+
+            @php
+            // Mengubah service dari string kembali menjadi array menggunakan pemisah ', '
+            $selectedServices = old('service', isset($project->service) ? explode(', ', $project->service) : []);
+            @endphp
+
             <h4 class="mb-2">Services</h4>
             <div class="form-group-services">
-
-                @php
-                // Pastikan $project->service adalah array
-                $selectedServices = old('service', isset($project->service) ? explode(',', $project->service) : []);
-
-                @endphp
-
                 <div class="checkbox-container">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="service[]" id="feasibility_study" value="feasibility_study" {{ in_array('feasibility_study', $selectedServices) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" name="service[]" id="feasibility_study" value="feasibility study" {{ in_array('feasibility study', $selectedServices) ? 'checked' : '' }}>
                         <label class="form-check-label" for="feasibility_study">Feasibility Study</label>
                     </div>
                     <div class="form-check">
@@ -181,7 +180,6 @@
                         <label class="form-check-label" for="project_development_construction_service">Project Development & Construction Service</label>
                     </div>
                 </div>
-
                 <div class="checkbox-container">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="service[]" id="steel_fabrication_management" value="steel fabrication management" {{ in_array('steel fabrication management', $selectedServices) ? 'checked' : '' }}>
@@ -189,7 +187,7 @@
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="service[]" id="site_comunication" value="site comunication & it system design" {{ in_array('site comunication & it system design', $selectedServices) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="site_comunication">Site Communication & IT System Design</label>
+                        <label class="form-check-label" for="site_comunication">Site Comunication & IT System Design</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="service[]" id="feasibility_studies_technical_due_diligence" value="feasibility studies & technical due diligence" {{ in_array('feasibility studies & technical due diligence', $selectedServices) ? 'checked' : '' }}>
