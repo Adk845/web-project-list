@@ -21,11 +21,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11px; /* Kecilkan ukuran font tabel */
+            font-size: 11px;
+            /* Kecilkan ukuran font tabel */
         }
 
-        th, td {
-            padding: 5px; /* Kurangi padding sel */
+        th,
+        td {
+            padding: 5px;
+            /* Kurangi padding sel */
             border: 1px solid #ddd;
             text-align: left;
         }
@@ -34,6 +37,7 @@
             background-color: #006ec1;
             color: white;
         }
+
         img {
             max-width: 150px;
             height: auto;
@@ -44,6 +48,12 @@
                 size: A4 landscape;
                 margin: 0;
             }
+        }
+         
+        tr .status{
+
+            width: 60px;
+            
         }
 
         .header {
@@ -141,17 +151,17 @@
             <thead>
                 <tr>
                     <!-- <th>No.</th> -->
-                    <th>Status</th>
+                    <th class="status">Status</th>
                     <th>Project Number</th>
                     <th>Project Name</th>
-                    <th>Project Manager</th>
+                    <!-- <th>Project Manager</th> -->
                     <th>Project Location</th>
                     <th>Client</th>
                     <th>Sector</th>
                     <th>Service</th>
                     <th>Description</th>
-                    <th>Project Start</th>
-                    <th>Project Finish</th>
+                    <!-- <th>Project Start</th>
+                    <th>Project Finish</th> -->
                     <th>Project Image</th>
                 </tr>
             </thead>
@@ -161,10 +171,13 @@
                     <!-- <td>{{ $key + 1 }}</td> -->
                     <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progres' ? 'status-on-progress' : '') }}">
                         {{ $project->status }}
+                        <br>
+                        <span>{{ $project->project_start->format('M Y') }} - {{ $project->project_finish->format('M Y') }}</span>
                     </td>
+
                     <td>{{ $project->project_number }}</td>
                     <td>{{ $project->project_name }}</td>
-                    <td>{{ $project->project_manager }}</td>
+                    <!-- <td>{{ $project->project_manager }}</td> -->
                     <td>{{ $project->project_location }}</td>
                     <td>{{ $project->client }}</td>
                     <td>
@@ -186,8 +199,8 @@
                         @endif
                     </td>
                     <td>{!! $project->project_description !!}</td>
-                    <td>{{ $project->project_start->format('d-M-Y') }}</td>
-                    <td>{{ $project->project_finish->format('d-M-Y') }}</td>
+                    <!-- <td>{{ $project->project_start->format('d-M-Y') }}</td>
+                    <td>{{ $project->project_finish->format('d-M-Y') }}</td> -->
                     <td>
                         @if ($project->project_picture)
                         <img src="{{ public_path('storage/' . $project->project_picture) }}" alt="Project Picture">

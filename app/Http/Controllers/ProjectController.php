@@ -14,6 +14,7 @@ class ProjectController extends Controller
     public function generatePdf($id)
     {
         // Fetch the project by ID
+        
         $projects = Project_list::find($id);
     
         // Check if the project exists
@@ -31,19 +32,21 @@ class ProjectController extends Controller
 
     public function generatePdfAll()
     {
-        $projects = Project_list::all();
-
-        
-
+        // Mengambil semua data project dan mengurutkan berdasarkan status
+        $projects = Project_list::orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC")->get();
+    
+        // Mengecek apakah data project kosong
         if ($projects->isEmpty()) {
             return redirect()->route('project.index')->with('error', 'No projects found.');
         }
-
-
+    
+        // Generate PDF
         $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects])
-               ->setPaper('a4', 'landscape');
+                   ->setPaper('a4', 'landscape');
+                   
         return $pdf->stream('all-projects.pdf');
     }
+    
 
 
     
