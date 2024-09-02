@@ -48,12 +48,37 @@ class ProjectController extends Controller
 
     
     // Menampilkan daftar proyek
-    public function index()
+    // public function index()
+    // {
+    //     $projects = Project_list::all();
+    // return view('project.index', [
+    //     'projects' => $projects
+    // ]);
+    // }
+
+    public function index(Request $request)
     {
-        $projects = Project_list::all();
-    return view('project.index', [
-        'projects' => $projects
-    ]);
+        // Mulai dengan query dasar
+        $projects = Project_list::query();
+
+        // Pencarian berdasarkan satu inputan yang mencari di beberapa kolom
+        if ($request->filled('query')) {
+            $query = $request->input('query'); // Memperbaiki pengaksesan input
+            $projects->where(function ($q) use ($query) {
+                $q->where('project_number', 'like', '%' . $query . '%')
+                  ->orWhere('project_name', 'like', '%' . $query . '%')
+                  ->orWhere('sector', 'like', '%' . $query . '%')
+                  ->orWhere('service', 'like', '%' . $query . '%');
+            });
+        }
+
+        // Ambil semua data atau data yang sudah difilter
+        $projects = $projects->get();
+
+        // Return ke view dengan data yang sudah difilter
+        return view('project.index', [
+            'projects' => $projects
+        ]);
     }
 
     public function index2()
