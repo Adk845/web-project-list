@@ -153,16 +153,16 @@
                     <!-- <th>No.</th> -->
                     <th class="status">Status</th>
                     <th>Project Number</th>
-                    <th>Project Name</th>
+                    <th style="width: 11%">Project Name</th>
                     <!-- <th>Project Manager</th> -->
                     <th>Project Location</th>
-                    <th>Client</th>
-                    <th>Sector</th>
+                    <th style="width: 11%">Client</th>
+                    <th >Sector</th>
                     <th>Service</th>
-                    <th>Description</th>
+                    <th style="width: 25%">Description</th>
                     <!-- <th>Project Start</th>
                     <th>Project Finish</th> -->
-                    <th>Project Image</th>
+                    <th style="width: 15%">Project Image</th>
                 </tr>
             </thead>
             <tbody>

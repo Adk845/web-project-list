@@ -141,8 +141,16 @@ td{
     font-size: 18px;
 }
 /* UNTUK TABLE =============================================*/
+
+.project_status{
+    width: 6%;
+}
+
+.project_number{
+    width: 5%;
+}
 .project_description {
-    max-width: 1000px; /* Atur sesuai kebutuhan */
+     /* Atur sesuai kebutuhan */
     width: 20%;
     white-space: wrap;
     overflow: hidden;
@@ -162,12 +170,7 @@ td{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.project
-.project-picture_ img {
-    max-width: 300px; /* Atur sesuai kebutuhan */
-    max-height: 150px; /* Atur sesuai kebutuhan */
+
+.project_picture img {
+    max-width: 250px; /* Atur sesuai kebutuhan */
 }
-
-
-
-
