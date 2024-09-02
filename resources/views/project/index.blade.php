@@ -3,19 +3,23 @@
 @section('content')
 
 <div class="row mb-4">
-    <div class="col-12 d-flex justify-content-between">
-        <!-- Tombol Tambah -->
-        <a href="{{ route('projects.pdfAll') }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
-        <a href="{{ route('project.create') }}" class="btn btn-primary">Tambah Proyek</a>
-       
-
-
-        <!-- Tombol Import, Export, dan Download Template -->
-
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <!-- Form Pencarian -->
+        <form action="{{ route('project.index') }}" method="GET" class="d-flex flex-grow-1 me-3">
+            <input type="text" name="query" class="form-control me-2" placeholder="Search Projects" value="{{ request('query') }}" style="width: 200px;">
+            <button type="submit" class="btn btn-secondary me-2">Search</button>
+            <a href="{{ route('project.index') }}" class="btn btn-primary">View All</a>
+        </form>
+        <!-- Tombol Tambah dan Download -->
+        <div class="d-flex">
+            <a href="{{ route('project.create') }}" class="btn btn-primary me-2">Tambah Proyek</a>
+            <a href="{{ route('projects.pdfAll') }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
+        </div>
     </div>
 </div>
+
 <div class="container-fluid">
-    
+
 
     <div class="table">
         <table class="table table-bordered table-striped" id="projectTable">
@@ -24,6 +28,7 @@
                     {{-- <th>No.</th> --}}
                     {{-- <th>Category</th> --}}
                     <th>Project Number</th>
+                    <th>Project Name</th>
                     <th class="project_manager">Project Manager</th>
                     <th class="project_location">Project Location</th>
                     <th class="client">Client</th>
@@ -38,18 +43,19 @@
             </thead>
             <tbody>
                 @foreach ($projects as $key => $project)
-                <?php 
-                $sektors[] = explode(", ",$project['sector']); 
-                $services[] = explode(", ",$project['service']);
-                
+                <?php
+                $sektors[] = explode(", ", $project['sector']);
+                $services[] = explode(", ", $project['service']);
+
                 ?>
                 <tr>
                     {{-- <td>{{ $key + 1 }}</td> --}}
                     {{-- <td>{{ $project->category }}</td> --}}
-                    <td >{{ $project->project_number }}</td>
-                    <td >{{ $project->project_manager }}</td>
-                    <td >{{ $project->project_location }}</td>
-                    <td >{{ $project->client }}</td>
+                    <td>{{ $project->project_number }}</td>
+                    <td>{{ $project->project_name }}</td>
+                    <td>{{ $project->project_manager }}</td>
+                    <td>{{ $project->project_location }}</td>
+                    <td>{{ $project->client }}</td>
                     <td>
                         @if ($project->sector)
                         <ul style="list-style-type: disc; padding-left: 20px;">
@@ -58,7 +64,7 @@
                             @endforeach
                         </ul>
                         @endif
-                        <td>
+                    <td>
                         @if ($project->service)
                         <ul style="list-style-type: disc; padding-left: 20px;">
                             @foreach(explode(',', $project->service) as $item)
@@ -67,35 +73,37 @@
                         </ul>
                         @endif
                     </td>
-                    <td ><p class="">{!! $project->project_description !!}</p></td>
-                    <td >{{ $project->project_start->format('d M Y') }}</td>
-                    <td >{{ $project->project_finish->format('d-m-Y') }}</td>
-                    <td >
+                    <td>
+                        <p class="">{!! $project->project_description !!}</p>
+                    </td>
+                    <td>{{ $project->project_start->format('d M Y') }}</td>
+                    <td>{{ $project->project_finish->format('d M Y') }}</td>
+                    <td>
                         <div>
-                        @if ($project->project_picture)
+                            @if ($project->project_picture)
                             <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail">
                             {{-- <img src="{{ asset('project_images/' . $project->project_picture) }}" alt="Project Picture" class="img-thumbnail"> --}}
-                        @else
+                            @else
                             No Image
-                        @endif
+                            @endif
                         </div>
-                        
+
                     </td>
                     <td>
                         <div class="dropdown text-center">
                             <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Dropdown button
+                                Dropdown button
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a href="{{ route('project.edit', $project) }}" class="dropdown-item">Edit</a></li>
-                              <li>
-                                <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
-                                </form>
-                            </li>
-                              <li><a href="{{ route('projects.pdf', $project->id) }}" class="dropdown-item">Download PDF</a></li>
+                                <li><a href="{{ route('project.edit', $project) }}" class="dropdown-item">Edit</a></li>
+                                <li>
+                                    <form action="{{ route('project.destroy', $project) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
+                                    </form>
+                                </li>
+                                <li><a href="{{ route('projects.pdf', $project->id) }}" class="dropdown-item">Download PDF</a></li>
                             </ul>
                         </div>
                     </td>
@@ -121,9 +129,9 @@
 @endsection
 
 @push('styles')
-    
+
 @endpush
 
 @push('script')
-    
+
 @endpush
