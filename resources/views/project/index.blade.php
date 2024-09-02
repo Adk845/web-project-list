@@ -4,8 +4,13 @@
 
 <div class="row mb-4">
     <div class="col-12 d-flex justify-content-between align-items-center">
-        <!-- Form Pencarian -->
         <form action="{{ route('project.index') }}" method="GET" class="d-flex flex-grow-1 me-3">
+            <select name="filter" class="form-control me-2" style="max-width: 150px;">
+                <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
+                <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
+                <option value="sector" {{ request('filter') == 'sector' ? 'selected' : '' }}>Sector</option>
+                <option value="service" {{ request('filter') == 'service' ? 'selected' : '' }}>Service</option>
+            </select>
             <input type="text" name="query" class="form-control me-2" placeholder="Search Projects" value="{{ request('query') }}" style="width: 200px;">
             <button type="submit" class="btn btn-secondary me-2">Search</button>
             <a href="{{ route('project.index') }}" class="btn btn-primary">View All</a>

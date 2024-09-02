@@ -57,29 +57,21 @@ class ProjectController extends Controller
     // }
 
     public function index(Request $request)
-    {
-        // Mulai dengan query dasar
-        $projects = Project_list::query();
+{
+    $query = $request->input('query');
+    $filter = $request->input('filter', 'project_number'); // default
 
-        // Pencarian berdasarkan satu inputan yang mencari di beberapa kolom
-        if ($request->filled('query')) {
-            $query = $request->input('query'); // Memperbaiki pengaksesan input
-            $projects->where(function ($q) use ($query) {
-                $q->where('project_number', 'like', '%' . $query . '%')
-                  ->orWhere('project_name', 'like', '%' . $query . '%')
-                  ->orWhere('sector', 'like', '%' . $query . '%')
-                  ->orWhere('service', 'like', '%' . $query . '%');
-            });
-        }
+    $projects = Project_list::query()
+        ->when($query, function ($queryBuilder) use ($query, $filter) {
+            return $queryBuilder->where($filter, 'like', "%{$query}%");
+        })
+        ->paginate(10);
 
-        // Ambil semua data atau data yang sudah difilter
-        $projects = $projects->get();
+    return view('project.index', [
+        'projects' => $projects
+    ]);
+}
 
-        // Return ke view dengan data yang sudah difilter
-        return view('project.index', [
-            'projects' => $projects
-        ]);
-    }
 
     public function index2()
     {
@@ -223,6 +215,8 @@ public function store(Request $request)
     }
     
 }
+
+
 
 
 ?>
