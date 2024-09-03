@@ -136,19 +136,21 @@ footer {
     display: none;
 }
 
-
+th{
+    text-align: center;
+}
 td{
     font-size: 18px;
 }
 /* UNTUK TABLE =============================================*/
 
-.project_status{
+/* .project_status{
     width: 6%;
-}
+} */
 
-.project_number{
+/* .project_number{
     width: 5%;
-}
+} */
 .project_description {
      /* Atur sesuai kebutuhan */
     width: 20%;
@@ -177,10 +179,6 @@ td{
 
 .client{
     width: 10%;
-}
-
-.sector{
-    
 }
 
 .services{

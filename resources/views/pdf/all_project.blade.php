@@ -36,6 +36,7 @@
         th {
             background-color: #006ec1;
             color: white;
+            text-align: center;
         }
 
         img {

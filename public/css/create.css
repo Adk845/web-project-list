@@ -47,3 +47,7 @@ button:hover {
 trix-editor{
     background-color: white;
 }
+
+.date_start_finish{
+    width: 250px;
+}
