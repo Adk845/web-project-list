@@ -93,7 +93,7 @@ class ProjectController extends Controller
         return view('tampilan', [
             'projects' => $projects
         ]);
-    }
+    } 
 
     // Menampilkan form pembuatan proyek
     public function create()
