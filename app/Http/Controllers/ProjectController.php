@@ -76,9 +76,19 @@ class ProjectController extends Controller
 }
 
 
-    public function index2()
+    public function index2(Request $request)
     {
-        $projects = Project_list::all();
+
+        $query = $request->input('query');
+        $filter = $request->input('filter', 'project_number'); // default
+    
+        $projects = Project_list::query()
+            ->when($query, function ($queryBuilder) use ($query, $filter) {
+                return $queryBuilder->where($filter, 'like', "%{$query}%");
+            })
+            ->paginate(10);
+    
+        // $projects = Project_list::all();
         return view('tampilan', [
             'projects' => $projects
         ]);
