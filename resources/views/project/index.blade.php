@@ -36,7 +36,7 @@
                     <th class="project_status">Project Status</th>
                     <th class="project_number">Project Number</th>
                     <th>Project Name</th>
-                    {{-- <th class="project_manager">Project Manager</th> --}}
+                    <th class="project_manager">Project Manager</th>
                     <th class="project_location">Project Location</th>
                     <th class="client">Client</th>
                     <th class="sector">Sector</th>
@@ -65,7 +65,7 @@
                     </td>
                     <td>{{ $project->project_number }}</td>
                     <td>{{ $project->project_name }}</td>
-                    {{-- <td>{{ $project->project_manager }}</td> --}}
+                    <td>{{ $project->project_manager }}</td>
                     <td>{{ $project->project_location }}</td>
                     <td>{{ $project->client }}</td>
                     <td>

@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project List</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -102,7 +103,7 @@
         }
 
         td img {
-            max-width: 150px;
+            max-width: 200px;
             height: auto;
         }
 
@@ -170,7 +171,23 @@
         @endif
     </div>
 
+    
     <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 d-flex justify-content-between align-items-center dropdown">
+                <form action="{{ route('project.index') }}" method="GET" class="d-flex flex-grow-1 me-3">
+                    <select name="filter" class="form-select me-2" style="max-width: 200px;">
+                        <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
+                        <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
+                        <option value="sector" {{ request('filter') == 'sector' ? 'selected' : '' }}>Sector</option>
+                        <option value="service" {{ request('filter') == 'service' ? 'selected' : '' }}>Service</option>
+                    </select>
+                    <input type="text" name="query" class="form-control me-2" placeholder="Search Projects" value="{{ request('query') }}" style="width: 200px;">
+                    <button type="submit" class="btn btn-secondary me-2">Search</button>
+                    <a href="{{ route('project.index') }}" class="btn btn-primary">View All</a>
+                </form>
+            </div>
+        </div>
         <div class="table-container">
             <h1>Project List</h1>
             <table>
@@ -185,8 +202,8 @@
                         <th>Sector</th>
                         <th>Service</th>
                         <th>Description</th>
-                        <th>Project Start</th>
-                        <th>Project Finish</th>
+                        {{-- <th>Project Start</th> --}}
+                        {{-- <th>Project Finish</th> --}}
                         <th>Project Image</th>
                     </tr>
                 </thead>
@@ -195,6 +212,8 @@
                     <tr>
                     <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progres' ? 'status-on-progress' : '') }}">
                         {{ $project->status }}
+                        <br>
+                        <span>{{ $project->project_start->format('M Y') }} - {{ $project->project_finish->format('M Y') }}</span>
                     </td>
                         <td data-label="Project Number">{{ $project->project_number }}</td>
                         <td data-label="Project Name">{{ $project->project_name }}</td>
@@ -220,8 +239,8 @@
                             @endif
                         </td>
                         <td>{!! $project->project_description !!}</td>
-                        <td data-label="Project Start">{{ $project->project_start->format('d-m-Y') }}</td>
-                        <td data-label="Project Finish">{{ $project->project_finish->format('d-m-Y') }}</td>
+                        {{-- <td data-label="Project Start">{{ $project->project_start->format('d-m-Y') }}</td> --}}
+                        {{-- <td data-label="Project Finish">{{ $project->project_finish->format('d-m-Y') }}</td> --}}
                         <td data-label="Project Image">
                             @if ($project->project_picture)
                                 <img src="{{ asset('storage/' . $project->project_picture) }}" alt="Project Picture">
