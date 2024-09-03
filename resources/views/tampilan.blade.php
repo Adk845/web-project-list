@@ -95,8 +95,8 @@
             text-align: left;
         }
 
-        td.description {
-            max-width: 250px;
+        .description {
+            width: 30%;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -157,7 +157,7 @@
 </head>
 
 <body class="antialiased">
-    <div class="login-links">
+    {{-- <div class="login-links">
         @if (Route::has('login'))
             @auth
                 <a href="{{ url('/project') }}" class="btn">Add Data</a>
@@ -169,7 +169,7 @@
                 @endif
             @endauth
         @endif
-    </div>
+    </div> --}}
 
     
     <div class="container">
@@ -186,7 +186,22 @@
                     <button type="submit" class="btn btn-secondary me-2">Search</button>
                     <a href="{{ route('project.index') }}" class="btn btn-primary">View All</a>
                 </form>
+
+                <div class="login-links">
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/project') }}" class="btn">Add Data</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn">Log in</a>
+            
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn">Register</a>
+                            @endif
+                        @endauth
+                    @endif
+                </div>
             </div>
+            
         </div>
         <div class="table-container">
             <h1>Project List</h1>
@@ -201,7 +216,7 @@
                         <th>Client</th>
                         <th>Sector</th>
                         <th>Service</th>
-                        <th>Description</th>
+                        <th class="description">Description</th>
                         {{-- <th>Project Start</th> --}}
                         {{-- <th>Project Finish</th> --}}
                         <th>Project Image</th>
