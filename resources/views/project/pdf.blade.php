@@ -59,6 +59,7 @@
         }
         .title_konten{
             width: 25%;
+            vertical-align: top;
         }
         .konten{
             
@@ -98,7 +99,7 @@
     {{-- <div class="header">
         
     </div> --}}
-    <div style="width: 100%; height: 90px; position:relative; top: 5px;">
+    <div style="width: 100%; height: 105px; position:relative; top: 5px;">
         <h1>Project Anouncement</h1>
         <div class="logo">
             <img width="150px" src="{{ public_path('images/logo resindo.jpeg') }}">
