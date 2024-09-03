@@ -12,6 +12,7 @@
         body {
             font-family: Arial, sans-serif;
             padding-left: 20px;
+            padding-right: 20px;
             margin: 0x;
             background-image: url({{public_path('images/template.jpg')}});
             background-size: cover;
@@ -81,6 +82,11 @@
             padding-top: 50px;
         }
      
+        .logo{
+            position: absolute;
+            top: 0px;
+            right: 10px;
+        }
 
 
 
@@ -94,6 +100,9 @@
     </div> --}}
     <div style="width: 100%; height: 90px; position:relative; top: 5px;">
         <h1>Project Anouncement</h1>
+        <div class="logo">
+            <img width="150px" src="{{ public_path('images/logo resindo.jpeg') }}">
+        </div>
     </div>
     
     
