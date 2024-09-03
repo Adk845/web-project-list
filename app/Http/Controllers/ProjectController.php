@@ -182,21 +182,17 @@ public function store(Request $request)
         $project->client = $request->client;
         $project->project_start = $request->project_start;
         $project->project_finish = $request->project_finish;
+       
         $project->sector = implode(', ', $request->sector); // Convert array to comma-separated string
         $project->service = implode(', ', $request->service); // Ensure it's a string
         $project->project_description = $request->project_description;
+        $project->project_description = $request->project_description;
+
     
         // Cek jika file gambar diupload
-        // if ($request->hasFile('project_picture')) {
-        //     // Hapus gambar lama jika ada
-        //     if ($project->project_picture) {
-        //         \Storage::disk('public')->delete($project->project_picture);
-        //     }
-    
-        //     // Upload gambar baru
-        //     $project->project_picture = $request->file('project_picture')->store('project_pictures', 'public');
-        // }
-    
+        if ($request->file('project_picture')) {
+            $project['project_picture'] = $request->file('project_picture')->store('project_pictures', 'public');
+        }
         $project->save();
     
         return redirect()->route('project.index')->with('success', 'Project updated successfully');

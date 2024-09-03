@@ -58,14 +58,14 @@
             </div>
 
 
-            <!-- <div class="form-group">
-                <label class="form-label" for="project_picture">Project Image (optional)</label>
-                <input class="form-control" type="file" name="project_picture" id="project_picture" accept="image/*" onchange="previewImage(event)">
-                <div class="mt-3">
-                    <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-height: 200px;">
-                </div>
-            </div> -->
-
+            <div class="form-group">
+                <label for="project_picture" class="form-label"></label>
+                <img src="{{ asset('storage/'. $project->project_picture) }}" class="img-thumbnail d-block" name="tampil" alt="..." width="15%" id="tampil">
+                <input class="form-control @error('project_picture') is-invalid @enderror" type="file" id="project_picture" name="project_picture" onchange="previewImage(event)">
+                @error('project_picture')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
 
             @php
             // Mengubah sektor dari string kembali menjadi array menggunakan pemisah ', '
@@ -229,6 +229,16 @@
 @endpush
 
 @push('script')
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('tampil');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script> {{-- library untuk text editor --}}
 <script src="{{ asset('js/create.js') }}"></script>
