@@ -202,6 +202,7 @@ public function store(Request $request)
     
         // Cek jika file gambar diupload
         if ($request->file('project_picture')) {
+            Storage::disk('public')->delete($project->project_picture);
             $project['project_picture'] = $request->file('project_picture')->store('project_pictures', 'public');
         }
         $project->save();
