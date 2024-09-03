@@ -34,6 +34,8 @@
             overflow-x: auto;
         }
 
+/* ============TABLE STYLE====================== */
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -41,7 +43,7 @@
 
         th, td {
             padding: 12px;
-            text-align: left;
+            text-align: center;
             vertical-align: top;
             border: 1px solid #ddd; /* Hapus warna latar belakang pada header tabel */
         }
@@ -153,29 +155,26 @@
             color: white;
             /* Dark yellow text color */
         }
+
+        .logo_segitiga{
+            position: absolute
+        }
+        .logo_kotak {
+            display: none;
+        }
+
     </style>
 </head>
-
 <body class="antialiased">
-    {{-- <div class="login-links">
-        @if (Route::has('login'))
-            @auth
-                <a href="{{ url('/project') }}" class="btn">Add Data</a>
-            @else
-                <a href="{{ route('login') }}" class="btn">Log in</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn">Register</a>
-                @endif
-            @endauth
-        @endif
-    </div> --}}
+    <div class="logo_segitiga">
+        <img width="200px" src="{{ asset('images/logo_segitiga.png') }}">
+    </div>
 
-    
     <div class="container">
         <div class="row mb-4">
             <div class="col-12 d-flex justify-content-between align-items-center dropdown">
-                <form action="{{ route('project.index') }}" method="GET" class="d-flex flex-grow-1 me-3">
+                <form action="{{ route('project.index2') }}" method="GET" class="d-flex flex-grow-1 me-3">
                     <select name="filter" class="form-select me-2" style="max-width: 200px;">
                         <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
                         <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
@@ -184,7 +183,7 @@
                     </select>
                     <input type="text" name="query" class="form-control me-2" placeholder="Search Projects" value="{{ request('query') }}" style="width: 200px;">
                     <button type="submit" class="btn btn-secondary me-2">Search</button>
-                    <a href="{{ route('project.index') }}" class="btn btn-primary">View All</a>
+                    <a href="{{ route('project.index2') }}" class="btn btn-primary">View All</a>
                 </form>
 
                 <div class="login-links">
@@ -204,7 +203,14 @@
             
         </div>
         <div class="table-container">
-            <h1>Project List</h1>
+            <div class="d-flex justify-content-between mb-3">
+                <div class="">
+                    <h1>Project List</h1>
+                </div>
+                <div class="logo_kotak">
+                    <img width="150px" src="{{ asset('images/logo resindo.jpeg') }}">
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
