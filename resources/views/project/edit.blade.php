@@ -41,26 +41,26 @@
                 <label class="form-label" for="client">Client</label>
                 <input class="form-control" type="text" name="client" id="client" value="{{ old('client', $project->client) }}" required>
             </div>
+            <div class="date_start_finish">
+                <div class="form-group">
+                    <label class="form-label" for="project_start">Start Date</label>
+                    <input class="form-control" type="date" name="project_start" id="project_start"
+                        value="{{ old('project_start', $project->project_start ? $project->project_start->format('Y-m-d') : '') }}"
+                        required>
+                </div>
 
-            <div class="form-group">
-                <label class="form-label" for="project_start">Start Date</label>
-                <input class="form-control" type="date" name="project_start" id="project_start"
-                    value="{{ old('project_start', $project->project_start ? $project->project_start->format('Y-m-d') : '') }}"
-                    required>
+
+                <div class="form-group">
+                    <label class="form-label" for="project_finish">finish Date</label>
+                    <input class="form-control" type="date" name="project_finish" id="project_finish"
+                        value="{{ old('project_finish', $project->project_finish ? $project->project_finish->format('Y-m-d') : '') }}"
+                        required>
+                </div>
             </div>
-
-
-            <div class="form-group">
-                <label class="form-label" for="project_finish">finish Date</label>
-                <input class="form-control" type="date" name="project_finish" id="project_finish"
-                    value="{{ old('project_finish', $project->project_finish ? $project->project_finish->format('Y-m-d') : '') }}"
-                    required>
-            </div>
-
 
             <div class="form-group">
                 <label for="project_picture" class="form-label"></label>
-                <img src="{{ asset('storage/'. $project->project_picture) }}" class="img-thumbnail d-block" name="tampil" alt="..." width="15%" id="tampil">
+                <img src="{{ asset('storage/'. $project->project_picture) }}" class="img-thumbnail d-block mb-3" name="tampil" alt="..." width="25%" id="tampil">
                 <input class="form-control @error('project_picture') is-invalid @enderror" type="file" id="project_picture" name="project_picture" onchange="previewImage(event)">
                 @error('project_picture')
                 <span class="text-danger">{{$message}}</span>

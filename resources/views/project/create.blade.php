@@ -47,22 +47,22 @@
                 <label class="form-label" for="client">Client</label>
                 <input class="form-control" type="text" name="client" id="client" required>
             </div>
+            <div class="date_start_finish">
+                <div class="form-group">
+                    <label class="form-label" for="project_start">Start Date</label>
+                    <input class="form-control" type="date" name="project_start" id="project_start" required>
+                </div>
 
-            <div class="form-group">
-                <label class="form-label" for="project_start">Start Date</label>
-                <input class="form-control" type="date" name="project_start" id="project_start" required>
+                <div class="form-group">
+                    <label class="form-label" for="project_finish">End Date</label>
+                    <input class="form-control" type="date" name="project_finish" id="project_finish" required>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label class="form-label" for="project_finish">End Date</label>
-                <input class="form-control" type="date" name="project_finish" id="project_finish" required>
-            </div>
-
             <div class="form-group">
                 <label class="form-label" for="project_picture">Project Image (optional)</label>
                 <input class="form-control" type="file" name="project_picture" id="project_picture" accept="image/*" onchange="previewImage(event)">
                 <div class="mt-3">
-                    <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-height: 200px;">  
+                    <img id="image_preview" src="#" alt="Image Preview" style="display: none; max-height: 200px;" class="mb-3">  
                 </div>
             </div>
 

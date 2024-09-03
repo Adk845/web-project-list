@@ -43,7 +43,6 @@
 
         th, td {
             padding: 12px;
-            text-align: center;
             vertical-align: top;
             border: 1px solid #ddd; /* Hapus warna latar belakang pada header tabel */
         }
@@ -51,6 +50,7 @@
         th {
             font-weight: bold;
             background-color: #d6a62d;
+            text-align: center;
         }
 
         tbody tr:nth-child(even) {
@@ -90,6 +90,8 @@
             padding: 20px;
         }
 
+        /* ======== BAGIAN TABLE ============== */
+
         .table-container h1 {
             color: #000;
             margin-top: 0;
@@ -103,6 +105,9 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
+        
+
 
         td img {
             max-width: 200px;
@@ -214,18 +219,18 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Status</th>
-                        <th>Project Number</th>
-                        <th>Project Name</th>
-                        <th>Project Manager</th>
-                        <th>Project Location</th>
-                        <th>Client</th>
-                        <th>Sector</th>
-                        <th>Service</th>
+                        <th class="status">Status</th>
+                        <th class="project_number">Project Number</th>
+                        <th class="project_name">Project Name</th>
+                        <th class="project_manager">Project Manager</th>
+                        <th class="project_location">Project Location</th>
+                        <th class="client">Client</th>
+                        <th class="sector">Sector</th>
+                        <th class="service">Service</th>
                         <th class="description">Description</th>
                         {{-- <th>Project Start</th> --}}
                         {{-- <th>Project Finish</th> --}}
-                        <th>Project Image</th>
+                        <th class="project_image">Project Image</th>
                     </tr>
                 </thead>
                 <tbody>
