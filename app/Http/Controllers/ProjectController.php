@@ -60,21 +60,22 @@ class ProjectController extends Controller
     // }
 
     public function index(Request $request)
-{
-    $query = $request->input('query');
-    $filter = $request->input('filter', 'project_number'); // default
-
-    $projects = Project_list::query()
-        ->when($query, function ($queryBuilder) use ($query, $filter) {
-            return $queryBuilder->where($filter, 'like', "%{$query}%");
-        })
-        ->paginate(10);
-
-    return view('project.index', [
-        'projects' => $projects
-    ]);
-}
-
+    {
+        $query = $request->input('query');
+        $filter = $request->input('filter', 'project_number'); // default
+    
+        $projects = Project_list::query()
+            ->orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC") // Urutkan 'On Progres' ke atas
+            ->when($query, function ($queryBuilder) use ($query, $filter) {
+                return $queryBuilder->where($filter, 'like', "%{$query}%"); // Terapkan filter pencarian
+            })
+            ->paginate(10);
+    
+        return view('project.index', [
+            'projects' => $projects
+        ]);
+    }
+    
 
     public function index2(Request $request)
     {
@@ -83,12 +84,12 @@ class ProjectController extends Controller
         $filter = $request->input('filter', 'project_number'); // default
     
         $projects = Project_list::query()
+            ->orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC") // Urutkan 'On Progres' ke atas
             ->when($query, function ($queryBuilder) use ($query, $filter) {
-                return $queryBuilder->where($filter, 'like', "%{$query}%");
+                return $queryBuilder->where($filter, 'like', "%{$query}%"); // Terapkan filter pencarian
             })
             ->paginate(10);
     
-        // $projects = Project_list::all();
         return view('tampilan', [
             'projects' => $projects
         ]);
