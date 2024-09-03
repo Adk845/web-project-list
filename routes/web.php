@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/', [ProjectController::class, 'index2'])->name('tampilan');
  Route::resource('project', ProjectController::class)->middleware('auth');
-
+ Route::get('/projects/index2', [ProjectController::class, 'index2'])->name('project.index2');
 
     // Route untuk menampilkan form login
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
