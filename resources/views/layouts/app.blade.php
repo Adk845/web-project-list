@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @stack('styles')
 
-    
+
 </head>
 
 <body>
@@ -31,19 +31,18 @@
                             <li class="nav-item"><a class="nav-link text-white" href="{{ route('project.index') }}">Projects</a></li>
 
                             @auth
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('logout') }}"
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
                             @endauth
                             @guest
-                                <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
-                                <li class="nav-item"><a class="nav-link text-white" href="{{ route('register') }}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="{{ route('login') }}">Login</a></li>
                             @endguest
                         </ul>
                     </nav>
@@ -72,9 +71,9 @@
         <!-- Main Content -->
         <main id="main-content" class="main-content">
             @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
             @endif
 
             <!-- Breadcrumb -->

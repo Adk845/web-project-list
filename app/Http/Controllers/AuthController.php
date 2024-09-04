@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -21,26 +22,37 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-
+    
         // Mengambil data dari form
         $credentials = $request->only('username', 'password');
-
-        // Proses login menggunakan username dan password
-        if (Auth::attempt($credentials)) {
-            // Redirect ke halaman dashboard jika berhasil login
-            return redirect()->intended('project');
+    
+        // Cek apakah username benar tapi password salah
+        $user = \App\Models\User::where('username', $request->username)->first();
+        
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                // Jika login berhasil, redirect ke halaman dashboard
+                Auth::login($user);
+                return redirect()->intended('project');
+            } else {
+                // Jika password salah, redirect kembali dengan pesan khusus
+                return back()->withErrors([
+                    'password' => 'Password salah.'
+            ])->withInput($request->only('username'));
+            }
+        } else {
+            // Jika username salah
+            return back()->withErrors([
+                'username' => 'Username tidak ditemukan.',
+            ])->withInput($request->only('username'));
         }
-
-        // Redirect kembali ke halaman login jika gagal
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);
     }
+    
 
     // Proses logout
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
