@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,36 +95,26 @@
 
         <!-- <h1>Login</h1> -->
 
-        @if ($errors->any())
-            <div class="error-container">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form method="POST" action="{{ route('login') }}">
+    
+        <form method="POST" action="{{ route('reset.password.post') }}">
+
     @csrf
 
+    
+    <input type="hidden" name="token" value="{{ $token }}">
+    <input type="hidden" name="username" value="{{ $username }}">
+    
+
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="{{ old('username') }}" required>
-        @if($errors->has('username'))
-            <span class="error">{{ $errors->first('username') }}</span>
-        @endif
+    <label for="password">New Password</label>
+            <input type="password" name="password" id="password" required>
     </div>
 
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        @if($errors->has('password'))
-            <a href="{{ route('forgot.password') }}">Forgot Password?</a>
-    @endif
-    </div>
-   
-
-    <button type="submit" class="btn">Login</button>
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" required>
+        </div>
+    <button type="submit" class="btn">Reset Password</button>
 </form>
 
 
