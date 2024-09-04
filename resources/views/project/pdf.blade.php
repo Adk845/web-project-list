@@ -13,7 +13,8 @@
             font-family: Arial, sans-serif;
             padding-left: 20px;
             padding-right: 20px;
-            margin: 0x;
+            padding-top: 0px;
+            margin: 0px;
             background-image: url({{public_path('images/template.jpg')}});
             background-size: cover;
             background-position: center;
@@ -22,7 +23,9 @@
         .overley {
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.5)
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0px;
+            padding: 0px;
         }
         table {
             width: 100%;
@@ -89,6 +92,17 @@
             right: 10px;
         }
 
+        .judul{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 35px
+        }
+
+        .titik_dua{
+            width: 2px;
+            vertical-align: top;
+            padding-right: 3px;
+        }
+
 
 
     </style>
@@ -99,8 +113,8 @@
     {{-- <div class="header">
         
     </div> --}}
-    <div style="width: 100%; height: 105px; position:relative; top: 5px;">
-        <h1>Project Anouncement</h1>
+    <div style="width: 100%; height: 105px; position:relative; top: 10px;">
+        <h1 class="judul">Project Anouncement</h1>
         <div class="logo">
             <img width="150px" src="{{ public_path('images/logo resindo.jpeg') }}">
         </div>
@@ -115,27 +129,33 @@
                         <table>
                             <tr>
                                 <td class="title_konten">Name of The Project</td>
-                                <td class="konten">: {{$projects[0]->project_name}}</td>
+                                <td class="titik_dua">:</td>
+                                <td class="konten">{{$projects[0]->project_name}}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Project Number</td>
-                                <td class="konten">: {{$projects[0]->project_number}}</td>
+                                <td class="titik_dua">:</td>
+                                <td class="konten">{{$projects[0]->project_number}}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Project Manager</td>
-                                <td class="konten">: {{$projects[0]->project_manager}}</td>
+                                <td class="titik_dua">:</td>
+                                <td class="konten">{{$projects[0]->project_manager}}</td>
                             </tr>
                             <tr>
                                 <td style="vertical-align: top">Project Brief</td>
+                                <td class="titik_dua">:</td>
                                 <td class="project_description">{!! $projects[0]->project_description !!}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Project Location</td>
-                                <td class="konten">: {{$projects[0]->project_location}}</td>
+                                <td class="titik_dua">:</td>
+                                <td class="konten">{{$projects[0]->project_location}}</td>
                             </tr>
                             <tr>
                                 <td class="title_konten">Starting / End Date</td>
-                                <td class="konten">: {{$projects[0]->project_start->format('d M Y')}} - {{$projects[0]->project_finish->format('d M Y')}}</td>
+                                <td class="titik_dua">:</td>
+                                <td class="konten">{{$projects[0]->project_start->format('d M Y')}} - {{$projects[0]->project_finish->format('d M Y')}}</td>
                             </tr>
                         </table>
                     </div>
