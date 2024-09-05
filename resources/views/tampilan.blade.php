@@ -64,7 +64,7 @@
         
 
         a {
-            color: #E8BE28;
+            color: rgb(254, 206, 0);
             text-decoration: none;
         }
 
@@ -73,7 +73,7 @@
         }
 
         .btn {
-            background-color: #E8BE28;
+            background-color: rgb(254, 206, 0);
             color: #000;
             padding: 10px 20px;
             border: none;
@@ -82,7 +82,7 @@
         }
 
         .btn:hover {
-            background-color: #d6a62d;
+            background-color: rgb(254, 206, 0);
         }
 
         .login-links {
@@ -155,7 +155,7 @@
         }
 
         .status-on-progress {
-            background-color: orange;
+            background-color: rgb(254, 206, 0);;
             /* Yellow background for on progress */
             color: white;
             /* Dark yellow text color */
@@ -168,6 +168,7 @@
             display: none;
         }
 
+     
     </style>
 </head>
 <body class="antialiased">
