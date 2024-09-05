@@ -62,7 +62,7 @@
                 <tr>
                     {{-- <td>{{ $key + 1 }}</td> --}}
                     {{-- <td>{{ $project->category }}</td> --}}
-                    <td class="{{ $project->status == 'Finish' ? 'bg-success text-white' : ($project->status == 'On Progres' ? 'bg-warning text-white' : '') }}">
+                    <td style="{{ $project->status == 'Finish' ? 'background-color: green; color: white;' : ($project->status == 'On Progres' ? 'background-color: rgb(254, 206, 0); color: white;' : '') }}">
                         {{ $project->status }}
                         <br>
                         <span>{{ $project->project_start->format('M Y') }} - {{ $project->project_finish->format('M Y') }}</span>
