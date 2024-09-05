@@ -183,6 +183,9 @@
                     <select name="filter" class="form-select me-2" style="max-width: 200px;">
                         <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
                         <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
+                        <option value="client" {{ request('filter') == 'client' ? 'selected' : '' }}>Client</option>
+                        <option value="project_start" {{ request('filter') == 'project_start' ? 'selected' : '' }}>Project Start</option>
+                        <option value="project_finish" {{ request('filter') == 'project_finish' ? 'selected' : '' }}>Project Finish</option>
                         <option value="sector" {{ request('filter') == 'sector' ? 'selected' : '' }}>Sector</option>
                         <option value="service" {{ request('filter') == 'service' ? 'selected' : '' }}>Service</option>
                     </select>
