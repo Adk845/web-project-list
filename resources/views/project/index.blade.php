@@ -7,10 +7,14 @@
     <div class="col-12 d-flex justify-content-between align-items-center dropdown">
         <form action="{{ route('project.index') }}" method="GET" class="d-flex flex-grow-1 me-3">
             <select name="filter" class="form-select me-2" style="max-width: 200px;">
-                <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
-                <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
-                <option value="sector" {{ request('filter') == 'sector' ? 'selected' : '' }}>Sector</option>
-                <option value="service" {{ request('filter') == 'service' ? 'selected' : '' }}>Service</option>
+            <option value="project_number" {{ request('filter') == 'project_number' ? 'selected' : '' }}>Project Number</option>
+            <option value="project_name" {{ request('filter') == 'project_name' ? 'selected' : '' }}>Project Name</option>
+            <option value="client" {{ request('filter') == 'client' ? 'selected' : '' }}>Client</option>
+            <option value="project_start" {{ request('filter') == 'project_start' ? 'selected' : '' }}>Project Start</option>
+            <option value="project_finish" {{ request('filter') == 'project_finish' ? 'selected' : '' }}>Project Finish</option>
+            <option value="sector" {{ request('filter') == 'sector' ? 'selected' : '' }}>Sector</option>
+            <option value="service" {{ request('filter') == 'service' ? 'selected' : '' }}>Service</option>
+        
             </select>
             <input type="text" name="query" class="form-control me-2" placeholder="Search Projects" value="{{ request('query') }}" style="width: 200px;">
             <button type="submit" class="btn btn-secondary me-2">Search</button>
@@ -19,7 +23,7 @@
         <!-- Tombol Tambah dan Download -->
         <div class="d-flex">
             <a href="{{ route('project.create') }}" class="btn btn-primary me-2">Tambah Proyek</a>
-            <a href="{{ route('projects.pdfAll') }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
+            <a href="{{ route('projects.pdfAll',  ['query' => request('query'), 'filter' => request('filter')]) }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
         </div>
     </div>
 </div>

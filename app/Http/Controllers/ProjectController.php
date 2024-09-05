@@ -30,10 +30,42 @@ class ProjectController extends Controller
         return $pdf->stream('project-list.pdf');
     }
 
-    public function generatePdfAll()
+    // public function generatePdfAll()
+    // {
+    //     // Mengambil semua data project dan mengurutkan berdasarkan status
+    //     $projects = Project_list::orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC")->get();
+    
+    //     // Mengecek apakah data project kosong
+    //     if ($projects->isEmpty()) {
+    //         return redirect()->route('project.index')->with('error', 'No projects found.');
+    //     }
+    
+    //     // Generate PDF
+    //     $pdf = PDF::loadView('pdf.all_project', ['projects' => $projects])
+    //                ->setPaper('a4', 'landscape');
+                   
+    //     return $pdf->stream('all-projects.pdf');
+    // }
+    
+
+   
+    public function generatePdfAll(Request $request)
     {
-        // Mengambil semua data project dan mengurutkan berdasarkan status
-        $projects = Project_list::orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC")->get();
+        // Ambil data pencarian dari request
+        $query = $request->input('query');
+        $filter = $request->input('filter', 'project_number'); // default
+    
+        // Mulai query dari model Project_list
+        $projectsQuery = Project_list::query();
+    
+        // Terapkan logika pencarian yang sama dengan index
+        $projectsQuery->orderByRaw("CASE WHEN status = 'On Progres' THEN 1 ELSE 0 END DESC")
+            ->when($query, function ($queryBuilder) use ($query, $filter) {
+                return $queryBuilder->where($filter, 'like', "%{$query}%");
+            });
+    
+        // Ambil hasil yang difilter
+        $projects = $projectsQuery->get();
     
         // Mengecek apakah data project kosong
         if ($projects->isEmpty()) {
@@ -48,16 +80,8 @@ class ProjectController extends Controller
     }
     
 
-
     
-    // Menampilkan daftar proyek
-    // public function index()
-    // {
-    //     $projects = Project_list::all();
-    // return view('project.index', [
-    //     'projects' => $projects
-    // ]);
-    // }
+   
 
     public function index(Request $request)
     {
