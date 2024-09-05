@@ -6,145 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project List</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding-top: 100px; /* Kurangi padding untuk menaikkan header */
+        padding-bottom: 50px; /* Tambahkan padding bawah untuk footer */
+    }
+
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px; /* Kecilkan ukuran font tabel */
+    }
+
+    th,
+    td {
+        padding: 4px; /* Kurangi padding sel */
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #006ec1;
+        color: white;
+        text-align: center;
+    }
+
+    img {
+        max-width: 120px; /* Kecilkan gambar untuk menghemat ruang */
+        height: auto;
+    }
+
+    @media print {
+        @page {
+            size: A4 landscape;
             margin: 0;
-            padding-top: 120px;
-            /* Adjust padding for header */
         }
+    }
 
-        .container {
-            width: 100%;
-            padding: 5px;
-        }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px; /* Kurangi tinggi header */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        border-bottom: 1px solid black;
+        background-color: #fff;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-            /* Kecilkan ukuran font tabel */
-        }
+    .header img {
+        height: 70px; /* Kurangi ukuran logo */
+    }
 
-        th,
-        td {
-            padding: 5px;
-            /* Kurangi padding sel */
-            border: 1px solid #ddd;
-            text-align: left;
-        }
+    .header .title {
+        text-align: right;
+        font-size: 18px; /* Kecilkan font header */
+        color: black;
+        margin-left: 20px;
+        margin-top: -40px;
+    }
 
-        th {
-            background-color: #006ec1;
-            color: white;
-            text-align: center;
-        }
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        font-size: 12px; /* Kurangi font footer */
+        border-top: 1px solid black;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
 
-        img {
-            max-width: 150px;
-            height: auto;
-        }
+    .footer .page-number:before {
+        content: "Page " counter(page);
+    }
 
-        @media print {
-            @page {
-                size: A4 landscape;
-                margin: 0;
-            }
-        }
-         
-        tr .status{
+    .footer .title {
+        text-align: center;
+        font-size: 12px; /* Kecilkan font footer */
+        color: #006ec1;
+        margin-top: -40px;
+    }
 
-            width: 60px;
-            
-        }
+    .footer .title2 {
+        text-align: right;
+        font-size: 12px; /* Kecilkan font footer */
+        color: black;
+        margin-top: -40px;
+    }
 
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            /* Adjust header height */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            border-bottom: 1px solid black;
-            background-color: #fff;
-            /* Ensure header background is white */
-        }
+    .status-finished {
+        background-color: green;
+        color: white;
+    }
 
-        .header img {
-            height: 80px;
-            /* Adjust logo size */
-        }
+    .status-on-progress {
+        background-color: orange;
+        color: white;
+    }
 
-        .header .title {
-            text-align: right;
-            font-size: 20px;
-            color: black;
-            margin-left: 20px;
-            margin-top: -40px;
-        }
+    .page-break {
+        page-break-before: always;
+    }
+</style>
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            /* background-color: #E8BE28; */
-            padding: 10px;
-            text-align: left;
-            font-size: 14px;
-            border-top: 1px solid black;
-
-            font-weight: bold;
-            box-sizing: border-box;
-        }
-
-        .footer .page-number:before {
-            content: "Page " counter(page);
-        }
-
-        .footer .title {
-            text-align: center;
-            font-size: 14px;
-            color: #006ec1;
-            /* margin-left: 20px; */
-            margin-top: -60px;
-        }
-
-        .footer .title2 {
-            text-align: right;
-            font-size: 14px;
-            color: black;
-            /* margin-left: 20px; */
-            margin-top: -60px;
-        }
-
-        .status-finished {
-            background-color: green;
-            /* Green background for finished */
-            color: white;
-            /* Dark green text color */
-        }
-
-        .status-on-progress {
-            background-color: orange;
-            /* Yellow background for on progress */
-            color: white;
-            /* Dark yellow text color */
-        }
-
-        .page-break {
-            page-break-before: always;
-        }
-    </style>
 </head>
 
 <body>
     <div class="header">
         <img src="{{ public_path('images/logo resindo.jpeg') }}" alt="Logo">
-        <div class="title"><b>Resources & Energy Group</b><br>Project List - {{ date('F Y') }}</div>
+        <div class="title"><b>Resindo Group</b><br>Project List - {{ date('F Y') }}</div>
     </div>
 
     <div class="container">
