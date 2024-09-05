@@ -22,7 +22,7 @@
         </form>
         <!-- Tombol Tambah dan Download -->
         <div class="d-flex">
-            <a href="{{ route('project.create') }}" class="btn btn-primary me-2">Tambah Proyek</a>
+            <a href="{{ route('project.create') }}" class="btn btn-primary me-2">Create Project </a>
             <a href="{{ route('projects.pdfAll',  ['query' => request('query'), 'filter' => request('filter')]) }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
         </div>
     </div>

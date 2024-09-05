@@ -107,14 +107,14 @@
     }
 
     .status-finished {
-        background-color: green;
-        color: white;
-    }
+    background-color: green;
+    color: white;
+}
 
-    .status-on-progress {
-        background-color: orange;
-        color: white;
-    }
+.status-on-progress {
+    background-color:  rgb(254, 206, 0);
+    color: white;
+}
 
     .page-break {
         page-break-before: always;
@@ -125,7 +125,7 @@
 
 <body>
     <div class="header">
-        <img src="{{ public_path('images/logo resindo.jpeg') }}" alt="Logo">
+        <img src="{{ public_path('images/logo resindo.jpg') }}" alt="Logo">
         <div class="title"><b>Resindo Group</b><br>Project List - {{ date('F Y') }}</div>
     </div>
 

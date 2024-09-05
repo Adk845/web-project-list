@@ -22,7 +22,7 @@
             <div class="container_navbar">
                 <div class="navbar_brand_div">
                     <a href="/" class="navbar-brand">
-                        <img src="{{ asset('images/logo.png') }}" alt="RESINDO Logo" style="height: 40px;">
+                        <img src="{{ asset('images/logo.png') }}" alt="RESINDO Logo" style="height: 75px;">
                     </a>
                 </div>
                 <div class="navbar_div">

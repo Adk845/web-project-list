@@ -116,7 +116,7 @@
     <div style="width: 100%; height: 105px; position:relative; top: 10px;">
         <h1 class="judul">Project Anouncement</h1>
         <div class="logo">
-            <img width="150px" src="{{ public_path('images/logo resindo.jpeg') }}">
+            <img width="150px" src="{{ public_path('images/logo resindo.jpg') }}">
         </div>
     </div>
     
