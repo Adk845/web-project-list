@@ -132,19 +132,19 @@ public function store(Request $request)
     // Validasi data
     // dd($request->all());
     $request->validate([
-        'status' => 'required|string|max:255',
+        'status' => 'nullable|string|max:255',
        
-        'project_number' => 'required|string|max:255',
-        'project_name' => 'required|string|max:255',
-        'project_manager' => 'required|string|max:255',
-        'project_location' => 'required|string|max:255',
-        'client' => 'required|string|max:255',
-        'project_start' => 'required|date',
-        'project_finish' => 'required|date',
+        'project_number' => 'nullable|string|max:255',
+        'project_name' => 'nullable|string|max:255',
+        'project_manager' => 'nullable|string|max:255',
+        'project_location' => 'nullable|string|max:255',
+        'client' => 'nullable|string|max:255',
+        'project_start' => 'nullable|date',
+        'project_finish' => 'nullable|date',
         'project_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'sector' => 'required|array',
-        'service' => 'required|array',
-        'project_description' => 'required|string',
+        'sector' => 'nullable|array',
+        'service' => 'nullable|array',
+        'project_description' => 'nullable|string',
     ]);
 
     // Menyimpan data ke database
@@ -191,18 +191,18 @@ public function store(Request $request)
         
         // dd($request->all());
         $request->validate([
-            'status' => 'required|string|in:On Progres,Finish', // Validate against allowed values
-            'project_number' => 'required|string|max:255',
-            'project_name' => 'required|string|max:255',
-            'project_manager' => 'required|string|max:255',
-            'project_location' => 'required|string|max:255',
-            'client' => 'required|string|max:255',
-            'project_start' => 'required|date',
-            'project_finish' => 'required|date',
+            'status' => 'nullable|string|in:On Progres,Finish', // Validate against allowed values
+            'project_number' => 'nullable|string|max:255',
+            'project_name' => 'nullable|string|max:255',
+            'project_manager' => 'nullable|string|max:255',
+            'project_location' => 'nullable|string|max:255',
+            'client' => 'nullable|string|max:255',
+            'project_start' => 'nullable|date',
+            'project_finish' => 'nullable|date',
             'project_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'sector' => 'required|array',
-            'service' => 'required|array',
-            'project_description' => 'required|string',
+            'sector' => 'nullable|array',
+            'service' => 'nullable|array',
+            'project_description' => 'nullable|string',
         ]);
     
         // Temukan proyek berdasarkan ID
