@@ -113,7 +113,7 @@ class ProjectController extends Controller
             ->when($query, function ($queryBuilder) use ($query, $filter) {
                 return $queryBuilder->where($filter, 'like', "%{$query}%"); // Terapkan filter pencarian
             })
-            ->paginate(10);
+            ->get();
     
         return view('tampilan', [
             'projects' => $projects

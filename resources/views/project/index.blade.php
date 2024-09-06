@@ -23,7 +23,7 @@
         <!-- Tombol Tambah dan Download -->
         <div class="d-flex">
             <a href="{{ route('project.create') }}" class="btn btn-primary me-2">Create Project </a>
-            <a href="{{ route('projects.pdfAll',  ['query' => request('query'), 'filter' => request('filter')]) }}" class="btn btn-warning btn-sm">DOWNLOAD ALL</a>
+            <a href="{{ route('projects.pdfAll',  ['query' => request('query'), 'filter' => request('filter')]) }}" class="btn btn-warning btn-sm" target="_blank">DOWNLOAD ALL</a>
         </div>
     </div>
 </div>
@@ -119,7 +119,7 @@
                                         <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure?')">Delete</button>
                                     </form>
                                 </li>
-                                <li><a href="{{ route('projects.pdf', $project->id) }}" class="dropdown-item">Download PDF</a></li>
+                                <li><a href="{{ route('projects.pdf', $project->id) }}" class="dropdown-item" target="_blank">Download PDF</a></li>
                             </ul>
                         </div>
                     </td>
@@ -127,6 +127,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="pagination">
+        {{$project->links() }}
+        </div>
     </div>
 </div>
 
