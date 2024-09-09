@@ -127,10 +127,12 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="pagination">
-        {{$project->links() }}
-        </div>
+       
     </div>
+    
+</div>
+<div class="d-flex justify-content-center">
+    {{$projects->links('pagination::bootstrap-4', ['class => pagination-sm']) }}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
