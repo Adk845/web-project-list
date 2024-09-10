@@ -155,7 +155,7 @@
                             <tr>
                                 <td class="title_konten">Starting / End Date</td>
                                 <td class="titik_dua">:</td>
-                                <td class="konten">{{$projects[0]->project_start->format('d M Y')}} - {{$projects[0]->project_finish->format('d M Y')}}</td>
+                                <td class="konten">{{$projects[0]->project_start->format('M Y')}} - {{$projects[0]->project_finish->format('M Y')}}</td>
                             </tr>
                         </table>
                     </div>

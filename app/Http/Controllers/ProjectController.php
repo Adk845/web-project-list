@@ -1,15 +1,35 @@
 <?php 
 
 namespace App\Http\Controllers;
+
+use App\Exports\ProjectsExport;
+use App\Imports\ProjectsImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 use App\Models\Project_list;
 use Illuminate\Support\Facades\Storage;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProjectController extends Controller
 {
+    public function export() 
+    {
+        return Excel::download(new ProjectsExport, 'Projects.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv', // Validasi tipe file
+        ]);
+
+        // Lakukan import
+        Excel::import(new ProjectsImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Data imported successfully!');
+    }
+
 
     public function generatePdf($id)
     {
@@ -247,7 +267,7 @@ public function store(Request $request)
         // Menghapus data proyek dari database
         $project->delete();
     
-        return redirect()->route('project.index')->with('success', 'Project deleted successfully');
+        return redirect()->route('project.index')->with('successdelete', 'Project deleted successfully');
     }
     
 }

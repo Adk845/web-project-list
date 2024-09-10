@@ -243,7 +243,8 @@
                     <td class="{{ $project->status == 'Finish' ? 'status-finished' : ($project->status == 'On Progres' ? 'status-on-progress' : '') }}">
                         {{ $project->status }}
                         <br>
-                        <span>{{ $project->project_start->format('M Y') }} - {{ $project->project_finish->format('M Y') }}</span>
+                        <span>{{ $project->project_start ? $project->project_start->format('M Y') : '-' }} - {{ $project->project_finish ? $project->project_finish->format('M Y') : '-' }}</span>
+
                     </td>
                         <td data-label="Project Number">{{ $project->project_number }}</td>
                         <td data-label="Project Name">{{ $project->project_name }}</td>
