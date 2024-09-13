@@ -1,7 +1,7 @@
 /* NAVBAR ATAS */
 header{
-   position: sticky;
-   top: 0;
+   /* position: sticky;
+   top: 0; */
    z-index: 2;
    
 }
@@ -144,6 +144,11 @@ td{
 }
 /* UNTUK TABLE =============================================*/
 
+.table_head th{
+    background-color: rgb(254, 206, 0);
+    position: sticky;
+    top: 0;
+}
 /* .project_status{
     width: 6%;
 } */

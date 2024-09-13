@@ -60,6 +60,11 @@
         tbody tr:hover {
             background-color: #f1f1f1; /* Background ringan saat hover */
         }
+        
+        thead{
+            position: sticky;
+            top: 0;
+        }
 
         
 
@@ -211,7 +216,7 @@
             </div>
             
         </div>
-        <div class="table-container">
+ 
             <div class="d-flex justify-content-between mb-3">
                 <div class="">
                     <h1>Project List</h1>
@@ -287,7 +292,7 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
+
     </div>
 </body>
 
