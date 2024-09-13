@@ -80,10 +80,10 @@
 <div class="container-fluid">
 
 
-    <div class="table">
+    {{-- <div class="table"> --}}
         <table class="table table-bordered table-striped" id="projectTable">
             <thead>
-                <tr>
+                <tr class="table_head">
                     {{-- <th>No.</th> --}}
                     {{-- <th>Category</th> --}}
                     <th class="project_status">Project Status</th>
@@ -98,7 +98,7 @@
                     {{-- <th class="project_start">Project Start</th> --}}
                     {{-- <th class="project_finish">Project Finish</th> --}}
                     <th>Project Picture</th>
-                    {{-- <th>Options</th> --}}
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,7 +179,7 @@
             </tbody>
         </table>
 
-    </div>
+    {{-- </div> --}}
 
 </div>
 <div class="d-flex justify-content-center">
