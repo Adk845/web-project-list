@@ -149,13 +149,13 @@ td{
     position: sticky;
     top: 0;
 }
-/* .project_status{
+.project_status{
     width: 6%;
-} */
+}
 
-/* .project_number{
+.project_number{
     width: 5%;
-} */
+}
 .project_description {
      /* Atur sesuai kebutuhan */
     width: 20%;
