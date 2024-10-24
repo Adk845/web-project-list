@@ -69,6 +69,7 @@
 
             @php
             // Mengubah sektor dari string kembali menjadi array menggunakan pemisah ', '
+            $project->sector = rtrim($project->sector);
             $selectedSectors = old('sector', isset($project->sector) ? explode(', ', $project->sector) : []);
             @endphp
 
